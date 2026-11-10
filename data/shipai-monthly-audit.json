@@ -1,16 +1,16 @@
 {
-  "checked_utc": "2026-11-09T08:57:04.567481+00:00",
+  "checked_utc": "2026-11-10T04:03:36.302599+00:00",
   "errors": [],
   "complete": true,
-  "feed_total": 1891,
-  "verified_public_total": 1890,
+  "feed_total": 1892,
+  "verified_public_total": 1891,
   "declared_total_difference": 1,
   "source_total_verified": false,
-  "sitemap_count": 1890,
+  "sitemap_count": 1891,
   "sitemap_pages": 4,
   "original_count": 1890,
-  "indexed_count": 1890,
-  "added_count": 0,
+  "indexed_count": 1891,
+  "added_count": 1,
   "missing_count": 0,
   "missing_urls": [],
   "sitemap_only_urls": [],
@@ -18,16 +18,16 @@
   "lost_existing_urls": [],
   "monthly": {
     "2021-09": {
-      "discovered": 15,
-      "imported": 15,
+      "discovered": 16,
+      "imported": 16,
       "added": 0,
       "missing": 0,
       "failed": 0,
       "missing_urls": []
     },
     "2021-10": {
-      "discovered": 32,
-      "imported": 32,
+      "discovered": 31,
+      "imported": 31,
       "added": 0,
       "missing": 0,
       "failed": 0,
@@ -514,9 +514,9 @@
       "missing_urls": []
     },
     "2026-11": {
-      "discovered": 9,
-      "imported": 9,
-      "added": 0,
+      "discovered": 10,
+      "imported": 10,
+      "added": 1,
       "missing": 0,
       "failed": 0,
       "missing_urls": []
@@ -559,9 +559,9 @@
       "failed": 0
     },
     "2026": {
-      "discovered": 314,
-      "imported": 314,
-      "added": 0,
+      "discovered": 315,
+      "imported": 315,
+      "added": 1,
       "missing": 0,
       "failed": 0
     }

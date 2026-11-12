@@ -68,12 +68,12 @@ function fitBookGrid(){
   const bounds=grid.getBoundingClientRect();
   const available=Math.floor(document.documentElement.clientHeight-(bounds.top+window.scrollY)-reserved);
   const count=grid.children.length;
-  const maxColumns=Math.min(count,Math.floor((bounds.width+gap)/(56+gap)));
+  const maxColumns=Math.min(count,Math.floor((bounds.width+gap)/(52+gap)));
   let best=null;
   for(let columns=3;columns<=maxColumns;columns++){
     const rows=Math.ceil(count/columns);
     const size=Math.floor(Math.min(112,(bounds.width-gap*(columns-1))/columns,(available-gap*(rows-1))/rows));
-    if(size<56)continue;
+    if(size<52)continue;
     const waste=columns*rows-count;
     if(!best||size>best.size||(size===best.size&&(waste<best.waste||(waste===best.waste&&rows<best.rows))))best={columns,rows,size,waste};
   }

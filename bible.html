@@ -76,7 +76,7 @@ function fitBookGrid(){
     const height=Math.floor(Math.min(112,Math.max(76,width*1.12),(available-gap*(rows-1))/rows));
     if(width<52||height<72)continue;
     const score=Math.min(width/96,height/100);
-    if(!best||score>best.score+0.001)best={columns,rows,height,score};
+    if(!best||score>best.score+0.001||(Math.abs(score-best.score)<=0.001&&columns>best.columns))best={columns,rows,height,score};
   }
   if(!best){clear();return}
   grid.dataset.viewportFit='true';

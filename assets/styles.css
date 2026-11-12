@@ -735,3 +735,13 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
 .home-three-columns .online-schedule div{font-size:clamp(12.6px,1.155vw,15.75px)}
 @media(max-width:420px){.home-three-columns .online-schedule div{font-size:14.7px}}
 .home-page .reading-preview,.home-page .faith-card-body{font-size:var(--text-size)}
+
+/* Keep natural two-line verse on desktop, three balanced lines on narrow phones. */
+.home-scripture .scripture-mobile-break{display:none}
+@media(max-width:600px){
+ .home-page .home-scripture{padding-left:14px;padding-right:14px}
+ .home-scripture h2{font-size:clamp(16px,4.8vw,19px);line-height:1.7}
+ .home-scripture .scripture-mobile-break{display:block}
+ .home-scripture .scripture-phrase{white-space:nowrap}
+ .home-scripture .scripture-ref{font-size:clamp(12px,3.4vw,14px)}
+}

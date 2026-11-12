@@ -690,3 +690,23 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
 @media(max-width:600px){.home-video-hero{height:clamp(130px,36.4vw,203px)}}
 @media(prefers-reduced-motion:reduce){.home-video-hero{height:clamp(175px,23.8vw,350px)}}
 @media(max-width:600px) and (prefers-reduced-motion:reduce){.home-video-hero{height:clamp(130px,36.4vw,203px)}}
+
+/* Homepage: tighten vertical rhythm between stacked sections and cards. */
+.home-page .home-scripture{padding-top:24px;padding-bottom:18px}
+.home-page .faith-section{padding-top:12px;padding-bottom:28px}
+.home-page .visit-section{padding-top:28px;padding-bottom:28px}
+.home-page #news{padding-top:28px;padding-bottom:48px}
+.home-three-columns .poster-card .hero-carousel-track{height:300px;max-height:300px;aspect-ratio:auto}
+.home-three-columns .poster-card .hero-slide img{height:100%;width:100%;object-fit:contain;object-position:center top}
+.home-three-columns .faith-card{padding-top:4px;padding-bottom:12px}
+.home-three-columns .faith-card-head h3{margin:0}
+.home-three-columns .faith-card{gap:10px}
+@media(max-width:880px){
+  .home-three-columns .poster-card .hero-carousel-track{height:300px;max-height:300px}
+}
+@media(max-width:600px){
+  .home-page .home-scripture{padding-top:18px;padding-bottom:12px}
+  .home-page .faith-section{padding-top:8px;padding-bottom:18px}
+  .home-page .visit-section{padding-top:20px;padding-bottom:20px}
+  .home-three-columns .poster-card .hero-carousel-track{height:340px;max-height:340px}
+}

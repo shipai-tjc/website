@@ -953,3 +953,8 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
     height: clamp(150px, 18vw, 265px);
   }
 }
+
+/* 2026-11-13: place the whole homepage visit block one spacing step lower. */
+.home-page .visit-section.section {
+  padding-top: 52px;
+}

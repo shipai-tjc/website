@@ -807,3 +807,11 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
   aspect-ratio:auto!important;
   object-fit:contain!important;
 }
+
+/* Homepage visit details: no enclosing card frame. */
+.home-page .visit-section .panel{
+  border:0;
+  box-shadow:none;
+  background:transparent;
+  padding:0;
+}

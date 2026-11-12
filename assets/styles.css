@@ -832,3 +832,12 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
   .home-page .online-schedule span{white-space:normal;line-height:1.7}
   .home-page .faith-card .button,.home-page .visit-section .button{font-size:15.5px}
 }
+
+/* 2026-11-13: scale only the mobile gospel poster, retaining its natural proportions. */
+@media (max-width:600px){
+  .home-page .home-three-columns .poster-card .hero-image-card.hero-carousel{
+    width:85%;
+    max-width:340px;
+    margin:0 auto!important;
+  }
+}

@@ -901,3 +901,48 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
   .home-page .visit-info-list dd{font-size:17px}
   .home-page .visit-section .map-panel{height:270px}
 }
+
+
+/* 2026-11-13: desktop equal-height feature columns and spacious verse section. */
+@media (min-width: 881px) {
+  /* Clear separation from the video above and the three columns below. */
+  .home-page .home-scripture.section {
+    padding-top: 92px;
+    padding-bottom: 82px;
+  }
+  .home-page #daily-faith.section {
+    padding-top: 24px;
+  }
+  /* The poster determines the row height; the other columns stretch to it. */
+  .home-page #daily-faith .home-three-columns {
+    align-items: stretch;
+  }
+  .home-page #daily-faith .home-three-columns > .faith-card {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+  }
+  /* Consistent bottom edge without adding frames or distorting media. */
+  .home-page #daily-faith .home-three-columns > .faith-card:not(.poster-card) > .button:last-child {
+    margin-top: auto;
+  }
+  /* Show more of the reading rather than leaving a tall empty column. */
+  .home-page #daily-faith .reading-preview {
+    -webkit-line-clamp: 9;
+  }
+  .home-page #daily-faith .live-card .online-schedule {
+    margin-top: 24px;
+  }
+}
+@media (min-width: 601px) and (max-width: 880px) {
+  .home-page .home-scripture.section {
+    padding-top: 70px;
+    padding-bottom: 62px;
+  }
+}
+@media (max-width: 600px) {
+  .home-page .home-scripture.section {
+    padding-top: 52px;
+    padding-bottom: 50px;
+  }
+}

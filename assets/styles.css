@@ -772,3 +772,38 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
 @media(max-width:600px){
   .home-page .poster-card .hero-carousel-track{height:auto;max-height:none}
 }
+
+/* Poster image-only layout: override older fixed card and image height rules. */
+.home-page .poster-card .hero-image-card.hero-carousel{
+  min-height:0!important;
+  height:auto!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.home-page .poster-card .hero-carousel-track{
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  border:0!important;
+  background:transparent!important;
+}
+.home-page .poster-card .hero-slide{
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+}
+.home-page .poster-card .hero-slide img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+}

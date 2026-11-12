@@ -19,7 +19,7 @@
   .grid[data-viewport-fit="true"]{grid-template-columns:repeat(var(--book-columns),minmax(0,1fr))}
   .grid[data-viewport-fit="true"] .tile{height:var(--book-tile-height);aspect-ratio:auto;min-height:0;padding:5px;gap:2px}
   .grid[data-viewport-fit="true"] .top{font-size:max(10px,calc(11px * var(--book-scale)))}
-  .grid[data-viewport-fit="true"] .center{font-size:max(20px,calc(28px * var(--book-scale)))}
+  .grid[data-viewport-fit="true"] .center{font-size:var(--book-center-size);white-space:nowrap}
   .grid[data-viewport-fit="true"] .name{font-size:max(10px,calc(12px * var(--book-scale)))}
   footer{font-size:11px;line-height:1.4;margin-top:12px}
 }
@@ -59,7 +59,7 @@ function scheduleBookGridFit(){
 }
 function fitBookGrid(){
   const grid=el('books');
-  const clear=()=>{delete grid.dataset.viewportFit;delete grid.dataset.fitColumns;delete grid.dataset.fitRows;['--book-columns','--book-tile-height','--book-scale'].forEach(key=>grid.style.removeProperty(key))};
+  const clear=()=>{delete grid.dataset.viewportFit;delete grid.dataset.fitColumns;delete grid.dataset.fitRows;['--book-columns','--book-tile-height','--book-scale','--book-center-size'].forEach(key=>grid.style.removeProperty(key))};
   if(!matchMedia('(min-width:700px)').matches||el('search').value.trim()||!grid.children.length){clear();return}
   const main=document.querySelector('main'),footer=document.querySelector('footer');
   const gap=parseFloat(getComputedStyle(grid).rowGap)||10;
@@ -84,7 +84,10 @@ function fitBookGrid(){
   grid.dataset.fitRows=best.rows;
   grid.style.setProperty('--book-columns',best.columns);
   grid.style.setProperty('--book-tile-height',best.height+'px');
-  grid.style.setProperty('--book-scale',Math.max(0.8,Math.min(1,best.score)).toFixed(3));
+  const scale=Math.max(0.8,Math.min(1,best.score));
+  grid.style.setProperty('--book-scale',scale.toFixed(3));
+  const tileWidth=(bounds.width-gap*(best.columns-1))/best.columns;
+  grid.style.setProperty('--book-center-size',Math.min(28*scale,(tileWidth-12)/2).toFixed(2)+'px');
 }
 window.addEventListener('resize',scheduleBookGridFit);
 window.addEventListener('load',scheduleBookGridFit);

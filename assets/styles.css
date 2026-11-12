@@ -616,3 +616,71 @@ dd{margin:0}
   .home-hero-video{display:none}
   .home-video-hero{aspect-ratio:16/9;background:#f5f5f5}
 }
+
+/* 2026-11-13: reduce homepage hero height without stretching the video. */
+.home-video-hero{height:clamp(250px,34vw,500px);aspect-ratio:auto}
+.home-video-hero .home-hero-video{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center center}
+@media(max-width:600px){
+  .home-video-hero{height:clamp(185px,52vw,290px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-video-hero{height:clamp(250px,34vw,500px);aspect-ratio:auto}
+}
+@media(max-width:600px) and (prefers-reduced-motion:reduce){
+  .home-video-hero{height:clamp(185px,52vw,290px)}
+}
+
+/* Compact rows; keep the time together and prevent excessive column gaps. */
+.home-three-columns .online-schedule{gap:10px;padding:12px 0}
+.home-three-columns .online-schedule div{
+  display:grid;
+  grid-template-columns:max-content max-content max-content;
+  align-items:baseline;
+  justify-content:start;
+  column-gap:10px;
+  row-gap:0;
+  font-size:clamp(12px,1.1vw,15px);
+}
+.home-three-columns .online-schedule strong{grid-column:1;grid-row:auto;font-weight:500}
+.home-three-columns .online-schedule span:nth-of-type(odd){grid-column:2}
+.home-three-columns .online-schedule span:nth-of-type(even){grid-column:3}
+.home-three-columns .online-schedule span{white-space:nowrap;line-height:1.55}
+@media(max-width:420px){
+  .home-three-columns .online-schedule div{grid-template-columns:max-content 1fr;column-gap:12px;font-size:14px}
+  .home-three-columns .online-schedule strong{grid-column:1}
+  .home-three-columns .online-schedule span:nth-of-type(odd){grid-column:2}
+  .home-three-columns .online-schedule span:nth-of-type(even){grid-column:2}
+}
+
+/* Consistent editorial text-link actions across site pages. */
+a.button,button.button{
+  display:inline-flex;
+  align-items:baseline;
+  justify-content:flex-start;
+  gap:8px;
+  width:max-content;
+  max-width:100%;
+  min-height:0;
+  padding:0 0 4px;
+  border:0;
+  border-bottom:1px solid currentColor;
+  border-radius:0;
+  background:transparent;
+  color:var(--ink);
+  box-shadow:none;
+  font-size:14px;
+  font-weight:400;
+  line-height:1.5;
+  text-align:left;
+  text-decoration:none;
+  transform:none;
+}
+a.button::after,button.button::after{content:"→";display:inline-block;flex:0 0 auto}
+a.button.primary,a.button.ghost,button.button.primary,button.button.ghost{
+  background:transparent;
+  color:var(--ink);
+  border:0;
+  border-bottom:1px solid currentColor;
+}
+a.button:hover,button.button:hover{opacity:.7;transform:none}
+a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);outline-offset:4px}

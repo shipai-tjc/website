@@ -946,3 +946,10 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
     padding-bottom: 50px;
   }
 }
+
+/* 2026-11-13: shorten homepage video banner on desktop; keep mobile hero scale. */
+@media (min-width: 601px) {
+  .home-page .home-video-hero {
+    height: clamp(150px, 18vw, 265px);
+  }
+}

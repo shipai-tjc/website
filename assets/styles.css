@@ -21,7 +21,7 @@
   --max:1120px;
   --serif:"Helvetica Neue",Arial,"Noto Serif TC","Source Han Serif TC","Source Han Serif","思源宋體","Songti TC","PMingLiU",sans-serif;
   --body:"Helvetica Neue",Arial,"Noto Serif TC","Source Han Serif TC","Source Han Serif","思源宋體","Songti TC","PMingLiU",sans-serif;
-  --text-size:14.4px;
+  --text-size:15.12px;
 }
 
 *{box-sizing:border-box}
@@ -730,3 +730,8 @@ a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);
   .home-page .poster-card .hero-carousel-track{height:340px;max-height:340px}
   .home-page .visit-section{padding-top:12px}
 }
+
+/* 2026-11-13: body copy +5%; keep headings and navigation unchanged. */
+.home-three-columns .online-schedule div{font-size:clamp(12.6px,1.155vw,15.75px)}
+@media(max-width:420px){.home-three-columns .online-schedule div{font-size:14.7px}}
+.home-page .reading-preview,.home-page .faith-card-body{font-size:var(--text-size)}

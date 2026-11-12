@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-12T02:51:26.200273+00:00",
+  "checked_utc": "2026-11-12T09:06:09.982366+00:00",
   "errors": [],
   "complete": true,
   "feed_total": 1894,
@@ -8,9 +8,9 @@
   "source_total_verified": false,
   "sitemap_count": 1893,
   "sitemap_pages": 4,
-  "original_count": 1892,
+  "original_count": 1893,
   "indexed_count": 1893,
-  "added_count": 1,
+  "added_count": 0,
   "missing_count": 0,
   "missing_urls": [],
   "sitemap_only_urls": [],
@@ -516,7 +516,7 @@
     "2026-11": {
       "discovered": 12,
       "imported": 12,
-      "added": 1,
+      "added": 0,
       "missing": 0,
       "failed": 0,
       "missing_urls": []
@@ -561,7 +561,7 @@
     "2026": {
       "discovered": 317,
       "imported": 317,
-      "added": 1,
+      "added": 0,
       "missing": 0,
       "failed": 0
     }

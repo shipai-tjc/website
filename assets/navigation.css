@@ -81,7 +81,7 @@
   padding:10px 12px;
   border-radius:10px;
   color:var(--ink);
-  font-size:16px;
+  font-size:14.4px;
   line-height:1.5;
   text-align:left;
   white-space:nowrap;
@@ -164,7 +164,7 @@
   .submenu a,
   .submenu-trigger{
     padding:7px 8px;
-    font-size:17px;
+    font-size:15.3px;
     white-space:normal;
   }
 

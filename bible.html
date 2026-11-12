@@ -73,7 +73,7 @@ function fitBookGrid(){
   for(let columns=3;columns<=maxColumns;columns++){
     const rows=Math.ceil(count/columns);
     const width=(bounds.width-gap*(columns-1))/columns;
-    const height=Math.floor(Math.min(112,width*1.12,(available-gap*(rows-1))/rows));
+    const height=Math.floor(Math.min(112,Math.max(76,width*1.12),(available-gap*(rows-1))/rows));
     if(width<52||height<72)continue;
     const score=Math.min(width/96,height/100);
     if(!best||score>best.score+0.001)best={columns,rows,height,score};

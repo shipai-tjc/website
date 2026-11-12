@@ -3,7 +3,11 @@
 .reading-toolbar{display:flex;gap:9px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:12px 0}.reading-toolbar button,.share{border:1px solid #cbd3d0;background:#fff;border-radius:9px;padding:10px 13px;color:#405e54;font:inherit;cursor:pointer}.reading-toolbar button:disabled{opacity:.35;cursor:default}.article-card{display:block;background:#fff;border:1px solid #d9dfdc;border-radius:12px;padding:17px 18px;margin:12px 0;text-decoration:none;color:#343c38;box-shadow:0 2px 6px #00000008}.article-card:hover,.article-card:focus-visible{border-color:#607d71;box-shadow:0 4px 13px #00000012}.article-card .source{font-size:13px;color:#567267}.article-card .article-title{display:block;font-size:17px;font-weight:650;margin:7px 0;line-height:1.55}.article-card .date{font-size:12px;color:#747d78}.article-card .read{float:right;color:#356653;font-size:13px}.result-title{font-size:17px;margin:18px 0 8px}#entry>.result-title,#entry>h3,#entry>h4{display:none!important}.search-results{margin:0 0 24px}.search-results[hidden]{display:none}.search-hit{width:100%;text-align:left;border:1px solid #d9dfdc;background:#fff;border-radius:9px;padding:12px;margin:6px 0;font:inherit;cursor:pointer;color:#334b42}.search-hit small{display:block;color:#6c7772;margin-top:4px}.entry{scroll-margin-top:14px}.detail{scroll-margin-top:12px}@media(max-width:699px){main{padding:24px 14px 65px}.grid{gap:9px}.tile{padding:9px;border-radius:11px}.detail{margin-top:20px}.chapters{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.chapter{min-height:46px}.entry{padding:16px;margin-top:14px}.controls input{flex-basis:100%}.article-card{padding:15px}.reading-toolbar button{flex:1;min-width:110px}} 
 /* Compact book tiles on tablet and desktop; retain the mobile touch layout. */
 @media(min-width:700px){
-  .grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+  header{padding-inline:max(32px,6vw,calc((100vw - 960px)/2))}
+  main{width:calc(100% - clamp(64px,12vw,160px));max-width:960px;padding:40px 0 90px}
+  .controls{margin-bottom:26px}
+  .category-legend{margin-bottom:24px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px}
   .tile{aspect-ratio:1/1.12;padding:8px;border-radius:10px}
   .tile .top{font-size:12px}
   .tile .center{font-size:28px}

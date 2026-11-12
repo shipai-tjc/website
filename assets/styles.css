@@ -684,3 +684,9 @@ a.button.primary,a.button.ghost,button.button.primary,button.button.ghost{
 }
 a.button:hover,button.button:hover{opacity:.7;transform:none}
 a.button:focus-visible,button.button:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+/* 2026-11-13: reduce homepage video hero height by a further 30%. */
+.home-video-hero{height:clamp(175px,23.8vw,350px)}
+@media(max-width:600px){.home-video-hero{height:clamp(130px,36.4vw,203px)}}
+@media(prefers-reduced-motion:reduce){.home-video-hero{height:clamp(175px,23.8vw,350px)}}
+@media(max-width:600px) and (prefers-reduced-motion:reduce){.home-video-hero{height:clamp(130px,36.4vw,203px)}}

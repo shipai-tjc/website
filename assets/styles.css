@@ -582,3 +582,37 @@ dd{margin:0}
 .home-page #news .news-item{border:0;box-shadow:none;background:transparent;border-radius:0;padding:16px 0;}
 .home-page #news .news-item + .news-item{border-top:1px solid var(--line);}
 .home-page #news .news-item:hover{transform:none;background:transparent;}
+
+/* 2026-11-13: homepage video, centered scripture and three equal content columns. */
+.home-video-hero{width:100%;margin:0;background:#fff;overflow:hidden}
+.home-hero-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.home-scripture{text-align:center;padding-top:42px;padding-bottom:34px}
+.home-scripture h2{font-size:clamp(19px,2.1vw,27px);font-weight:400;line-height:1.8;margin:0 auto;max-width:900px}
+.home-scripture .scripture-ref{font-size:clamp(13px,1.15vw,16px);margin:8px 0 0;line-height:1.8}
+.home-three-columns{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:18px}
+.home-three-columns .faith-card{min-width:0;padding:12px 8px 20px;gap:14px}
+.home-three-columns .faith-card-head h3{font-size:clamp(19px,1.6vw,23px)}
+.home-three-columns .poster-card .hero-carousel{width:100%;min-height:0;margin:0}
+.home-three-columns .poster-card .hero-carousel-track{height:auto;aspect-ratio:992/1405;cursor:pointer}
+.home-three-columns .poster-card .hero-slide{height:100%}
+.home-three-columns .poster-card .hero-slide img{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
+.home-three-columns .online-schedule div{grid-template-columns:minmax(72px,110px) 1fr;gap:3px 8px}
+.home-three-columns .online-schedule strong{grid-column:1 / -1;grid-row:auto}
+.home-three-columns .online-schedule span:nth-of-type(odd){grid-column:1}
+.home-three-columns .online-schedule span:nth-of-type(even){grid-column:2}
+@media(max-width:880px){
+  .home-three-columns{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-three-columns .live-card{grid-column:1 / -1}
+}
+@media(max-width:600px){
+  .home-scripture{padding-top:28px;padding-bottom:24px}
+  .home-scripture h2{font-size:19px}
+  .home-three-columns{grid-template-columns:1fr;gap:22px}
+  .home-three-columns .live-card{grid-column:auto}
+  .home-three-columns .faith-card{padding:12px 0 18px}
+  .home-three-columns .poster-card .hero-carousel{max-width:420px;margin:0 auto}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-hero-video{display:none}
+  .home-video-hero{aspect-ratio:16/9;background:#f5f5f5}
+}

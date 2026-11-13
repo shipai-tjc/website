@@ -30,14 +30,31 @@
     transform: translateY(-5.5px) rotate(-45deg);
   }
 
-  /* Separate the hero from the sticky header, preserving video aspect ratio. */
-  .home-page .home-video-hero {
-    margin-top: 12px;
-  }
+}
 
-  /* In a cropped video, <50% places the visible content lower within its frame. */
-  .home-page .home-video-hero .home-hero-video {
-    object-fit: cover;
-    object-position: center 40%;
-  }
+/* Hero follows the uploaded video's intrinsic proportions at every viewport.
+   Override legacy fixed desktop/mobile heights and 12px header gap. */
+.home-page .site-header { margin-bottom: 0; }
+.home-page main { margin-top: 0; padding-top: 0; }
+.home-page .home-video-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+.home-page .home-video-hero .home-hero-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-page .home-video-hero { aspect-ratio: 16 / 9; }
 }

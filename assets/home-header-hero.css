@@ -1,0 +1,38 @@
+/* Homepage desktop header & hero refinement (2026-11-13).
+   Keep mobile layout and other pages untouched. */
+@media (min-width: 601px) {
+  .home-page .site-header {
+    padding-top: 6.8px; /* original 8px × 0.85 */
+    padding-bottom: 6.8px;
+  }
+
+  .home-page .site-header .brand {
+    width: 177.65px; /* 209px × 0.85 */
+    height: 54.91px; /* 64.6px × 0.85 */
+  }
+
+  .home-page .site-header .menu-button {
+    width: 37.4px; /* 44px × 0.85 */
+    height: 37.4px;
+    padding: 8.5px; /* 10px × 0.85 */
+    gap: 4px;
+  }
+
+  .home-page .site-header .menu-button span {
+    width: 20.4px; /* 24px × 0.85 */
+    height: 1.3px;
+  }
+
+  .home-page .site-header .menu-button[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+  .home-page .site-header .menu-button[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
+  }
+
+  /* The hero is a video, not an image. Preserve its cover crop & size. */
+  .home-page .home-video-hero .home-hero-video {
+    object-fit: cover;
+    object-position: center 60%;
+  }
+}

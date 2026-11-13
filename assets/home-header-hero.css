@@ -30,9 +30,14 @@
     transform: translateY(-5.5px) rotate(-45deg);
   }
 
-  /* The hero is a video, not an image. Preserve its cover crop & size. */
+  /* Separate the hero from the sticky header, preserving video aspect ratio. */
+  .home-page .home-video-hero {
+    margin-top: 12px;
+  }
+
+  /* In a cropped video, <50% places the visible content lower within its frame. */
   .home-page .home-video-hero .home-hero-video {
     object-fit: cover;
-    object-position: center 60%;
+    object-position: center 40%;
   }
 }

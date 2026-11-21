@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css?v=20261122-footer81-copyright" />
   <link rel="stylesheet" href="assets/navigation.css?v=20261013-nav" />
-  <link rel="stylesheet" href="assets/pages.css" />
+  <link rel="stylesheet" href="assets/pages.css?v=20261122-testimony-full" />
   <link rel="stylesheet" href="assets/bible-theme.css?v=20261122-unified-footer" />
 </head>
 <body>
@@ -68,12 +68,12 @@
     <section id="testimonies" class="section">
       <div class="content-toolbar" aria-label="生命見證搜尋">
         <label class="search-field">
-          <span>搜尋清單</span>
+          <span>搜尋見證文章</span>
           <input id="testimony-search" type="search" placeholder="輸入作者、家庭、標題、內文關鍵字" autocomplete="off" />
         </label>
       </div>
-      <div id="testimony-detail" class="blog-detail" hidden></div>
-      <div id="testimony-blog-list" class="testimony-list-wrap"></div>
+      <div id="testimony-blog-list" class="testimony-articles"></div>
+      <p id="testimony-empty" class="notice-panel" role="status" hidden>沒有符合搜尋條件的見證。</p>
     </section>
 
     <section class="section cta-section">
@@ -95,6 +95,6 @@
     <small>© 2026 真耶穌教會石牌教會</small>
   </footer>
   <script src="assets/app.js"></script>
-  <script src="assets/content-loader.js"></script>
+  <script src="assets/content-loader.js?v=20261122-testimony-full"></script>
 </body>
 </html>

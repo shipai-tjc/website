@@ -42,32 +42,23 @@ function itemMatches(item, query) {
   ].join(' ')).includes(query);
 }
 
-function renderDetail(target, item, type) {
-  if (!target || !item) return;
-  const meta = type === 'testimony'
-    ? [item.author].filter(Boolean)
-    : [item.number, item.date, item.subtitle].filter(Boolean);
+function testimonyArticle(item) {
+  const slug = getSlug(item);
   const image = item.image
-    ? `<figure class="blog-figure"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.title)}"></figure>`
+    ? `<figure class="blog-figure"><img loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.title)}"></figure>`
     : '';
   const source = item.sourceUrl
     ? `<a class="card-link" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener">查看原始來源 →</a>`
     : '';
-  const backLink = type === 'testimony'
-    ? '<a class="detail-back-link" href="testimonies.html#testimonies">← 返回見證清單</a>'
-    : '';
-  target.innerHTML = `
-    <article class="detail-article" id="${escapeHtml(getSlug(item))}">
-      ${backLink}
-      <div class="meta">${meta.map(value => `<span>${escapeHtml(value)}</span>`).join('')}</div>
-      <h3>${escapeHtml(item.title)}</h3>
+  return `
+    <article class="detail-article" id="${escapeHtml(slug)}">
+      <h2><a href="#${encodeURIComponent(slug)}">${escapeHtml(item.title)}</a></h2>
+      ${item.author ? `<p class="meta">${escapeHtml(item.author)}</p>` : ''}
       ${image}
-      <p class="lead">${escapeHtml(item.excerpt)}</p>
       <div class="content">${toParagraphs(item.content)}</div>
       ${source}
     </article>
   `;
-  target.hidden = false;
 }
 
 async function renderNewsList() {
@@ -90,54 +81,41 @@ async function renderNewsList() {
 async function renderTestimonyBlog() {
   const target = document.getElementById('testimony-blog-list');
   if (!target) return;
-  const detail = document.getElementById('testimony-detail');
+  const empty = document.getElementById('testimony-empty');
   const search = document.getElementById('testimony-search');
-  const toolbar = search?.closest('.content-toolbar');
   try {
     const data = await loadJson('data/testimonies.json');
-    const setListVisibility = visible => {
-      target.hidden = !visible;
-      if (toolbar) toolbar.hidden = !visible;
-    };
-    const renderList = () => {
-      const query = normalizeSearch(search?.value || '');
-      const items = data.items.filter(item => itemMatches(item, query));
-      target.innerHTML = items.length ? `
-        <ol class="testimony-list">
-          ${items.map((item, index) => `
-            <li>
-              <a class="testimony-list-link" href="testimonies.html#${encodeURIComponent(getSlug(item))}">
-                <span class="testimony-list-number">${String(item.directoryOrder || index + 1).padStart(2, '0')}</span>
-                <span class="testimony-list-copy">
-                  <strong>${escapeHtml(item.title)}</strong>
-                  <span>${escapeHtml(item.author || '')}</span>
-                </span>
-                <span class="testimony-list-action">閱讀全文 →</span>
-              </a>
-            </li>
-          `).join('')}
-        </ol>
-      ` : '<p class="notice-panel">沒有符合搜尋條件的見證。</p>';
-    };
-    const showSelected = () => {
-      const currentSlug = decodeURIComponent(location.hash.replace(/^#/, ''));
-      const selected = data.items.find(item => getSlug(item) === currentSlug);
-      if (selected) {
-        renderDetail(detail, selected, 'testimony');
-        setListVisibility(false);
-        requestAnimationFrame(() => detail?.scrollIntoView({ block: 'start' }));
-      } else {
-        if (detail) {
-          detail.hidden = true;
-          detail.innerHTML = '';
-        }
-        setListVisibility(true);
+    target.innerHTML = data.items.map(testimonyArticle).join('');
+    const articles = Array.from(target.children);
+
+    function filterArticles() {
+      const query = normalizeSearch(search?.value.trim());
+      articles.forEach((article, index) => {
+        article.hidden = !itemMatches(data.items[index], query);
+      });
+      if (empty) empty.hidden = articles.some(article => !article.hidden);
+    }
+
+    function scrollToArticle() {
+      let slug;
+      try {
+        slug = decodeURIComponent(location.hash.slice(1));
+      } catch {
+        return;
       }
-    };
-    renderList();
-    showSelected();
-    search?.addEventListener('input', renderList);
-    window.addEventListener('hashchange', showSelected);
+      const article = document.getElementById(slug);
+      if (!article || !target.contains(article)) return;
+      if (article.hidden && search) {
+        search.value = '';
+        filterArticles();
+      }
+      article.scrollIntoView({ block: 'start' });
+    }
+
+    filterArticles();
+    requestAnimationFrame(scrollToArticle);
+    search?.addEventListener('input', filterArticles);
+    window.addEventListener('hashchange', scrollToArticle);
   } catch (error) {
     target.innerHTML = '<p class="notice-panel">目前無法讀取生命見證資料，請稍後再試。</p>';
   }

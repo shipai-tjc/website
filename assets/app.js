@@ -57,54 +57,28 @@ if (menuButton && nav) {
   document.body.appendChild(script);
 })();
 
-// During worship time show the live stream; afterward show the channel's newest converted video.
-(function loadShipaiGathering(){
-  const frame = document.getElementById('shipai-live-frame');
-  const status = document.getElementById('shipai-live-status');
+// Refresh a home page left open between recordings. The HTML link works immediately.
+(function loadShipaiGathering() {
   const link = document.getElementById('shipai-gathering-link');
-  if (!frame) return;
+  if (!link) return;
 
-  const channelId = 'UCk8zggAqSLPpgpTlR75Ju6w';
-  const uploadsPlaylist = 'UUk8zggAqSLPpgpTlR75Ju6w';
-  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Taipei' }));
-  const day = now.getDay();
-  const minutes = now.getHours() * 60 + now.getMinutes();
-  const windows = day === 3 || day === 5
-    ? [[19 * 60 + 50, 21 * 60]]
-    : day === 6
-      ? [[9 * 60 + 50, 11 * 60 + 10], [13 * 60 + 20, 14 * 60 + 40]]
-      : [];
-  const currentWindow = windows.find(([start, end]) => minutes >= start && minutes < end);
-
-  const showLatestRecording = async function(){
-    let videoId = 'dmrzvlui9vM';
+  async function refresh() {
     try {
       const response = await fetch('data/latest-video.json?t=' + Date.now(), { cache: 'no-store' });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.videoId) videoId = data.videoId;
-      }
-    } catch (error) {
-      // Keep the known playable video as fallback.
+      if (!response.ok) return;
+      const data = await response.json();
+      if (!Number.isSafeInteger(data.durationSeconds) || data.durationSeconds <= 0 ||
+          typeof data.videoId !== 'string' || !/^[A-Za-z0-9_-]{11}$/.test(data.videoId)) return;
+      link.href = 'https://www.youtube.com/watch?v=' + data.videoId + '&autoplay=1';
+      link.title = '觀看最新崇拜聚會影片：' + data.title;
+    } catch {
+      // The last verified link stays usable if the update is unavailable.
     }
-    frame.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?rel=0';
-    if (status) status.textContent = '目前播放最近一次聚會轉存的影片；每次聚會完成後會自動更新。';
-    if (link) {
-      link.href = 'https://youtu.be/' + encodeURIComponent(videoId);
-      link.textContent = '開啟聚會影片';
-    }
-  };
-
-  if (currentWindow) {
-    frame.src = 'https://www.youtube.com/embed/live_stream?channel=' + channelId + '&autoplay=0';
-    if (status) status.textContent = '目前為崇拜時間，可直接觀看直播；結束後會自動切換成聚會影片。';
-    if (link) {
-      link.href = 'https://youtube.com/@TJChurchShipai/live';
-      link.textContent = '開啟聚會連結';
-    }
-    const millisecondsUntilEnd = (currentWindow[1] - minutes) * 60 * 1000 - now.getSeconds() * 1000;
-    window.setTimeout(showLatestRecording, Math.max(0, millisecondsUntilEnd) + 120000);
-  } else {
-    showLatestRecording();
   }
+
+  refresh();
+  window.setInterval(refresh, 5 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) refresh();
+  });
 })();

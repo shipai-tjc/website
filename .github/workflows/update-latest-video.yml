@@ -2,27 +2,41 @@ name: Update latest gathering video
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/update-latest-video.mjs'
+      - '.github/workflows/update-latest-video.yml'
   schedule:
     - cron: "17,47 * * * *"
 
 permissions:
   contents: write
+  pages: write
+
+concurrency:
+  group: update-latest-gathering-video
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Read latest YouTube video
-        run: node scripts/update-latest-video.mjs > data/latest-video.json
-      - name: Commit update
-        shell: bash
+        with:
+          ref: main
+      - name: Find the latest playable recording
+        run: node scripts/update-latest-video.mjs
+      - name: Publish changed recording
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if git diff --quiet -- data/latest-video.json; then
+          if git diff --quiet -- index.html data/latest-video.json; then
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest-video.json
-          git commit -m "Update latest gathering video"
+          git add index.html data/latest-video.json
+          git commit -m "Update latest gathering recording"
           git push
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

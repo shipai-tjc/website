@@ -350,12 +350,4 @@
     font-size:.92em;
     line-height:1.65;
   }
-  #fellowship .schedule-table tbody td:nth-child(3)::before,
-  #religious-education .schedule-table tbody td:nth-child(3)::before{
-    content:"說明：";
-    font-size:.9em;
-  }
-  #religious-education .schedule-table tbody td:nth-child(3)::before{
-    content:"對象：";
-  }
 }

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="assets/navigation.css?v=20261113-type-news" />
   <style>
     /* Home quick links: four equal columns on desktop, two by two on phones. */
-    .home-page .home-quick-links.section { box-sizing:border-box; width:100%; max-width:none; margin-left:0; margin-right:0; padding:clamp(28px,4vw,52px) 0; }
+    .home-page .home-quick-links.section { box-sizing:border-box; width:100%; max-width:none; margin:0; padding:0; }
     .home-quick-links-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; }
     .home-quick-link { display:flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:0; min-height:127px; padding:20px 12px; border:0; border-radius:0; text-align:center; color:#fff; font-size:clamp(18.67px,calc(1.6vw + 2.67px),23.67px); font-weight:500; line-height:1.5; letter-spacing:.12em; text-decoration:none; transition:filter .2s ease; }
     /* Four related browns, distinct from the navigation bar (#574935). */
@@ -61,7 +61,7 @@
     .home-visit-name { font-size:1.18rem; font-weight:600; }
     .home-map-link { display:inline-block; margin-top:6px; text-underline-offset:5px; }
     @media(max-width:700px) {
-      .home-page .home-quick-links.section { padding:24px 0 32px; }
+      .home-page .home-quick-links.section { padding:0; }
       .home-quick-links-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; }
       .home-quick-link { min-height:85px; padding:12px 4px; font-size:clamp(13px,3.8vw,17px); letter-spacing:.04em; gap:5px; }
       .home-quick-icon { width:21px; height:21px; }
@@ -183,10 +183,6 @@
       <video class="home-hero-video" autoplay muted playsinline preload="metadata" aria-label="石牌教會首頁主視覺影片">
         <source src="assets/%E7%9F%B3%E7%89%8C%E9%A6%96%E9%A0%81HERO.mp4?v=20261122-hero" type="video/mp4">
       </video>
-    </section>
-    <section class="section home-scripture" aria-label="聖經經文">
-      <h2> <span class="scripture-phrase"><span class="scripture-line">凡勞苦擔重擔的人，</span><span class="scripture-line">可以到我這裏來，</span><span class="scripture-line">我就使你們得安息。</span></span></h2>
-      <p class="scripture-ref">（馬太福音第十一章第28節）</p>
     </section>
     <section class="section home-quick-links" aria-label="常用入口">
       <nav class="home-quick-links-grid" aria-label="石牌教會常用連結">

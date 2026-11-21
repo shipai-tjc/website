@@ -51,8 +51,9 @@ function testimonyArticle(item) {
     ? `<a class="card-link" href="${escapeHtml(item.sourceUrl)}" target="_blank" rel="noopener">查看原始來源 →</a>`
     : '';
   return `
-    <article class="detail-article" id="${escapeHtml(slug)}">
-      <h2><a href="#${encodeURIComponent(slug)}">${escapeHtml(item.title)}</a></h2>
+    <article class="detail-article" id="${escapeHtml(slug)}" tabindex="-1">
+      <a class="detail-back-link" href="#testimonies">返回標題清單</a>
+      <h2>${escapeHtml(item.title)}</h2>
       ${item.author ? `<p class="meta">${escapeHtml(item.author)}</p>` : ''}
       ${image}
       <div class="content">${toParagraphs(item.content)}</div>
@@ -85,39 +86,47 @@ async function renderTestimonyBlog() {
   const search = document.getElementById('testimony-search');
   try {
     const data = await loadJson('data/testimonies.json');
-    target.innerHTML = data.items.map(testimonyArticle).join('');
-    const articles = Array.from(target.children);
+    const directory = document.getElementById('testimony-directory');
+    const detail = document.getElementById('testimony-detail');
+    target.innerHTML = data.items.map(item => `
+      <li><a href="#${encodeURIComponent(getSlug(item))}">${escapeHtml(item.title)}</a></li>
+    `).join('');
+    const rows = Array.from(target.children);
 
-    function filterArticles() {
+    function filterTitles() {
       const query = normalizeSearch(search?.value.trim());
-      articles.forEach((article, index) => {
-        article.hidden = !itemMatches(data.items[index], query);
+      rows.forEach((row, index) => {
+        row.hidden = !itemMatches(data.items[index], query);
       });
-      if (empty) empty.hidden = articles.some(article => !article.hidden);
+      if (empty) empty.hidden = rows.some(row => !row.hidden);
     }
 
-    function scrollToArticle() {
-      let slug;
-      try {
-        slug = decodeURIComponent(location.hash.slice(1));
-      } catch {
-        return;
+    let selectedIndex = -1;
+    function showSelection() {
+      const hash = location.hash.slice(1);
+      const index = data.items.findIndex(item => encodeURIComponent(getSlug(item)) === hash);
+      directory.hidden = index >= 0;
+      detail.hidden = index < 0;
+      if (index >= 0) {
+        detail.innerHTML = testimonyArticle(data.items[index]);
+        const article = detail.firstElementChild;
+        article.focus({ preventScroll: true });
+        article.scrollIntoView({ block: 'start' });
+      } else {
+        detail.replaceChildren();
+        if (selectedIndex >= 0 && !rows[selectedIndex].hidden) {
+          rows[selectedIndex].firstElementChild.focus();
+        }
       }
-      const article = document.getElementById(slug);
-      if (!article || !target.contains(article)) return;
-      if (article.hidden && search) {
-        search.value = '';
-        filterArticles();
-      }
-      article.scrollIntoView({ block: 'start' });
+      selectedIndex = index;
     }
 
-    filterArticles();
-    requestAnimationFrame(scrollToArticle);
-    search?.addEventListener('input', filterArticles);
-    window.addEventListener('hashchange', scrollToArticle);
+    filterTitles();
+    showSelection();
+    search?.addEventListener('input', filterTitles);
+    window.addEventListener('hashchange', showSelection);
   } catch (error) {
-    target.innerHTML = '<p class="notice-panel">目前無法讀取生命見證資料，請稍後再試。</p>';
+    target.innerHTML = '<li class="notice-panel">目前無法讀取生命見證資料，請稍後再試。</li>';
   }
 }
 

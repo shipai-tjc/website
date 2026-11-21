@@ -136,9 +136,23 @@
   outline-offset:2px;
 }
 
+.testimony-titles{
+  max-width:56rem;
+  margin:0 auto;
+  padding:0;
+  list-style:none;
+}
+.testimony-titles li{border-bottom:1px solid var(--line)}
+.testimony-titles a{
+  display:block;
+  padding:14px 6px;
+  color:var(--ink);
+  font-size:clamp(17px,2vw,21px);
+  line-height:1.6;
+  overflow-wrap:anywhere;
+}
+.testimony-titles a:hover,.testimony-titles a:focus-visible{text-decoration:underline}
 .testimony-articles{
-  display:grid;
-  gap:clamp(24px,4vw,48px);
   max-width:56rem;
   margin-inline:auto;
 }

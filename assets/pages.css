@@ -39,27 +39,25 @@
   white-space:nowrap;
 }
 
-/* Visit page: all three schedule tables share the same first-column edge. */
+/* Shared column tracks: the second column begins at the same position
+   for every visit schedule table, independent of its number of columns. */
 #schedule .schedule-table,
 #fellowship .schedule-table,
 #religious-education .schedule-table{
+  width:100%;
   table-layout:fixed;
+  box-sizing:border-box;
 }
 @media (min-width:601px){
-#schedule .schedule-table th:first-child,
-#schedule .schedule-table td:first-child,
-#fellowship .schedule-table th:first-child,
-#fellowship .schedule-table td:first-child,
-#religious-education .schedule-table th:first-child,
-#religious-education .schedule-table td:first-child{
-  width:25%;
-}
-#fellowship .schedule-table th:nth-child(2),
-#fellowship .schedule-table td:nth-child(2),
-#religious-education .schedule-table th:nth-child(2),
-#religious-education .schedule-table td:nth-child(2){
-  width:30%;
-}
+  #schedule .schedule-table col.visit-col-label,
+  #fellowship .schedule-table col.visit-col-label,
+  #religious-education .schedule-table col.visit-col-label{
+    width:25%;
+  }
+  #fellowship .schedule-table col.visit-col-time,
+  #religious-education .schedule-table col.visit-col-time{
+    width:30%;
+  }
 }
 #schedule .schedule-table th,
 #schedule .schedule-table td,
@@ -67,6 +65,7 @@
 #fellowship .schedule-table td,
 #religious-education .schedule-table th,
 #religious-education .schedule-table td{
+  box-sizing:border-box;
   overflow-wrap:anywhere;
 }
 
@@ -287,6 +286,11 @@
     table-layout:auto;
     border:1px solid var(--line);
     border-radius:18px;
+  }
+  #schedule .schedule-table colgroup,
+  #fellowship .schedule-table colgroup,
+  #religious-education .schedule-table colgroup{
+    display:none;
   }
   #schedule .schedule-table thead,
   #schedule .schedule-table tbody,

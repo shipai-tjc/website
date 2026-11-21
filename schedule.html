@@ -38,6 +38,22 @@
       .visit-disclosure-content { padding: 16px 12px 20px; }
       .visit-disclosure-action { gap: 8px; }
     }
+    /* Three stacked links reuse the homepage's muted milk-tea browns. */
+    .schedule-quick-section.section {padding-top:32px;padding-bottom:24px;}
+    .schedule-quick-links {display:grid;grid-template-columns:minmax(0,1fr);gap:0;}
+    .schedule-quick-link {box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:100px;padding:20px 16px;text-align:center;text-decoration:none;color:#fff;font-size:clamp(20px,2.2vw,25px);font-weight:500;letter-spacing:.12em;line-height:1.5;transition:filter .2s ease;}
+    .schedule-quick-link:nth-child(1){background:#A69589;}
+    .schedule-quick-link:nth-child(2){background:#9E8B7F;}
+    .schedule-quick-link:nth-child(3){background:#968276;}
+    .schedule-quick-link:visited{color:#fff;}
+    .schedule-quick-link:hover{filter:brightness(1.08);}
+    .schedule-quick-link:focus-visible{outline:2px solid #574935;outline-offset:-4px;}
+    #schedule,#fellowship,#religious-education {scroll-margin-top:100px;}
+    @media(max-width:640px){
+      .schedule-quick-section.section{padding-top:20px;padding-bottom:20px;}
+      .schedule-quick-link{min-height:85px;font-size:20px;}
+    }
+    @media(prefers-reduced-motion:reduce){.schedule-quick-link{transition:none;}}
   </style>
   <script type="application/ld+json">
   {
@@ -145,21 +161,12 @@
       <p class="hero-copy scripture-copy">節期的末日，就是最大之日，耶穌站著高聲說：人若渴了，可以到我這裏來喝。<span class="scripture-ref">（約翰福音七章 37～38 節）</span></p>
     </section>
 
-    <section class="section">
-      <div class="section-kicker">Address</div>
-      <div class="detail-grid">
-        <article class="panel">
-          <h2>地址與聯絡</h2>
-          <dl class="info-list">
-            <div><dt>教會</dt><dd>真耶穌教會石牌教會</dd></div>
-            <div><dt>地址</dt><dd>112 台北市北投區致遠一路一段 27 號</dd></div>
-            <div><dt>電話</dt><dd><a href="tel:+886228233734">02-2823-3734</a></dd></div>
-          </dl>
-        </article>
-        <div class="map-panel" aria-label="石牌教會地圖">
-          <iframe title="真耶穌教會石牌教會 Google 地圖" loading="lazy" src="https://www.google.com/maps?q=112%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E8%87%B4%E9%81%A0%E4%B8%80%E8%B7%AF%E4%B8%80%E6%AE%B527%E8%99%9F&output=embed"></iframe>
-        </div>
-      </div>
+    <section class="section schedule-quick-section" aria-label="聚會時間分類">
+      <nav class="schedule-quick-links" aria-label="聚會時間快速選單">
+        <a href="#schedule" class="schedule-quick-link">崇拜時間</a>
+        <a href="#fellowship" class="schedule-quick-link">團契聚會</a>
+        <a href="#religious-education" class="schedule-quick-link">宗教教育</a>
+      </nav>
     </section>
 
     <section id="schedule" class="section">
@@ -246,6 +253,15 @@
     <div class="footer-links"><a href="index.html">首頁</a><a href="testimonies.html">石牌40見證</a><a href="https://tjcshipaiandtianmu.blogspot.com/" target="_blank" rel="noopener">每日讀經</a><a href="https://youtube.com/@TJChurchShipai" target="_blank" rel="noopener">YouTube</a></div>
     <small>© 真耶穌教會石牌教會</small>
   </footer>
+  <script>
+    document.querySelectorAll('.schedule-quick-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const target = document.querySelector(link.getAttribute('href'));
+        const details = target && target.querySelector('details');
+        if (details) details.open = true;
+      });
+    });
+  </script>
   <script src="assets/app.js"></script>
 </body>
 </html>

@@ -247,63 +247,56 @@
   }
 }
 
-/* Small screens: align the first two fields, then give long descriptions full width. */
+/* Match the two-column reading rhythm of the adjacent tables on phones.
+   Fellowship keeps its three semantic columns on desktop/tablet, while
+   the description occupies a second line of the time column on mobile. */
 @media (max-width:600px){
-  #fellowship .fellowship-table,
-  #religious-education .education-table{
+  #fellowship .fellowship-table{
     display:block;
-    overflow:visible;
-    border:0;
-    border-radius:0;
-    background:transparent;
-  }
-  .fellowship-table thead,.education-table thead{
-    position:absolute;
-    width:1px;
-    height:1px;
+    width:100%;
+    table-layout:auto;
     overflow:hidden;
-    clip:rect(0,0,0,0);
-    white-space:nowrap;
-  }
-  .fellowship-table tbody,.education-table tbody{
-    display:grid;
-    gap:12px;
-  }
-  .fellowship-table tbody tr,.education-table tbody tr{
-    display:grid;
-    grid-template-columns:minmax(0,33.333%) minmax(0,66.667%);
     border:1px solid var(--line);
-    border-radius:14px;
-    background:rgba(255,255,255,.58);
-    padding:12px 8px;
+    border-radius:18px;
   }
-  .fellowship-table tbody td,.education-table tbody td{
+  #fellowship .fellowship-table thead,
+  #fellowship .fellowship-table tbody{
+    display:block;
+    width:100%;
+  }
+  #fellowship .fellowship-table thead tr,
+  #fellowship .fellowship-table tbody tr{
+    display:grid;
+    grid-template-columns:minmax(0,34%) minmax(0,66%);
+    width:100%;
+  }
+  #fellowship .fellowship-table th,
+  #fellowship .fellowship-table td{
     display:block;
     width:auto;
-    padding:8px;
-    border:0;
     min-width:0;
-    overflow-wrap:break-word;
+    overflow-wrap:anywhere;
+    border-bottom:0;
+    padding:12px 10px;
   }
-  .fellowship-table tbody td:first-child,
-  .education-table tbody td:first-child{
-    font-weight:600;
+  #fellowship .fellowship-table thead th:nth-child(3){
+    display:none;
   }
-  .fellowship-table tbody td:nth-child(3),
-  .education-table tbody td:nth-child(3){
-    grid-column:1 / -1;
-    margin-top:7px;
-    padding-top:12px;
-    border-top:1px solid var(--line);
+  #fellowship .fellowship-table tbody tr{
+    border-bottom:1px solid var(--line);
   }
-  .fellowship-table tbody td:nth-child(3)::before,
-  .education-table tbody td:nth-child(3)::before{
-    display:block;
-    margin-bottom:6px;
+  #fellowship .fellowship-table tbody tr:last-child{
+    border-bottom:0;
+  }
+  #fellowship .fellowship-table tbody td:nth-child(3){
+    grid-column:2;
+    padding-top:0;
     color:var(--muted);
-    font-size:12px;
-    letter-spacing:.08em;
+    font-size:.92em;
+    line-height:1.65;
   }
-  .fellowship-table tbody td:nth-child(3)::before{content:"說明"}
-  .education-table tbody td:nth-child(3)::before{content:"對象"}
+  #fellowship .fellowship-table tbody td:nth-child(3)::before{
+    content:"說明：";
+    font-size:.9em;
+  }
 }

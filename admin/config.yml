@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: h-s017/tjcshipai
+  repo: shipai-tjc/website
   branch: main
   open_authoring: false
 
@@ -11,9 +11,9 @@ locale: "zh_Hant"
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-site_url: "https://h-s017.github.io/tjcshipai/"
-display_url: "https://h-s017.github.io/tjcshipai/"
-logo_url: "https://h-s017.github.io/tjcshipai/"
+site_url: "https://shipai.tjchurch.org.tw/"
+display_url: "https://shipai.tjchurch.org.tw/"
+logo_url: "https://shipai.tjchurch.org.tw/"
 
 collections:
   - name: "site_data"

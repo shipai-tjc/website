@@ -40,7 +40,7 @@
     }
     /* Three stacked links reuse the homepage's muted milk-tea browns. */
     .schedule-quick-section.section {padding-top:32px;padding-bottom:24px;}
-    .schedule-quick-links {display:grid;grid-template-columns:minmax(0,1fr);gap:0;}
+    .schedule-quick-links {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;}
     .schedule-quick-link {box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:100px;padding:20px 16px;text-align:center;text-decoration:none;color:#fff;font-size:clamp(20px,2.2vw,25px);font-weight:500;letter-spacing:.12em;line-height:1.5;transition:filter .2s ease;}
     .schedule-quick-link:nth-child(1){background:#A69589;}
     .schedule-quick-link:nth-child(2){background:#9E8B7F;}
@@ -51,6 +51,7 @@
     #schedule,#fellowship,#religious-education {scroll-margin-top:100px;}
     @media(max-width:640px){
       .schedule-quick-section.section{padding-top:20px;padding-bottom:20px;}
+      .schedule-quick-links{grid-template-columns:minmax(0,1fr);}
       .schedule-quick-link{min-height:85px;font-size:20px;}
     }
     @media(prefers-reduced-motion:reduce){.schedule-quick-link{transition:none;}}

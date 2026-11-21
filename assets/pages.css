@@ -238,6 +238,15 @@
   }
 }
 
+/* Keep true table columns on tablets instead of forcing horizontal scrolling. */
+@media (min-width:601px) and (max-width:880px){
+  #fellowship .fellowship-table,
+  #religious-education .education-table{
+    display:table;
+    overflow:visible;
+  }
+}
+
 /* Small screens: align the first two fields, then give long descriptions full width. */
 @media (max-width:600px){
   #fellowship .fellowship-table,

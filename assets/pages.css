@@ -34,14 +34,33 @@
 }
 .schedule-table tr:last-child td{border-bottom:0}
 
-/* Keep fellowship and religious-education columns aligned at equal widths. */
-.fellowship-table,.education-table{
+/* Visit page: all three schedule tables share the same first-column edge. */
+#schedule .schedule-table,
+#fellowship .schedule-table,
+#religious-education .schedule-table{
   table-layout:fixed;
 }
-.fellowship-table th,.fellowship-table td,
-.education-table th,.education-table td{
-  width:33.3333%;
-  overflow-wrap:break-word;
+#schedule .schedule-table th:first-child,
+#schedule .schedule-table td:first-child,
+#fellowship .schedule-table th:first-child,
+#fellowship .schedule-table td:first-child,
+#religious-education .schedule-table th:first-child,
+#religious-education .schedule-table td:first-child{
+  width:25%;
+}
+#fellowship .schedule-table th:nth-child(2),
+#fellowship .schedule-table td:nth-child(2),
+#religious-education .schedule-table th:nth-child(2),
+#religious-education .schedule-table td:nth-child(2){
+  width:30%;
+}
+#schedule .schedule-table th,
+#schedule .schedule-table td,
+#fellowship .schedule-table th,
+#fellowship .schedule-table td,
+#religious-education .schedule-table th,
+#religious-education .schedule-table td{
+  overflow-wrap:anywhere;
 }
 
 .blog-grid{
@@ -238,65 +257,92 @@
   }
 }
 
-/* Keep true table columns on tablets instead of forcing horizontal scrolling. */
+/* Tablet tables retain their full width instead of clipping a native table. */
 @media (min-width:601px) and (max-width:880px){
-  #fellowship .fellowship-table,
-  #religious-education .education-table{
+  #schedule .schedule-table,
+  #fellowship .schedule-table,
+  #religious-education .schedule-table{
     display:table;
     overflow:visible;
   }
 }
 
-/* Match the two-column reading rhythm of the adjacent tables on phones.
-   Fellowship keeps its three semantic columns on desktop/tablet, while
-   the description occupies a second line of the time column on mobile. */
+/* On phones all three tables use the same two-column grid.
+   Extra information is shown under the time, never offscreen. */
 @media (max-width:600px){
-  #fellowship .fellowship-table{
+  #schedule .schedule-table,
+  #fellowship .schedule-table,
+  #religious-education .schedule-table{
     display:block;
     width:100%;
-    table-layout:auto;
+    max-width:100%;
     overflow:hidden;
+    table-layout:auto;
     border:1px solid var(--line);
     border-radius:18px;
   }
-  #fellowship .fellowship-table thead,
-  #fellowship .fellowship-table tbody{
+  #schedule .schedule-table thead,
+  #schedule .schedule-table tbody,
+  #fellowship .schedule-table thead,
+  #fellowship .schedule-table tbody,
+  #religious-education .schedule-table thead,
+  #religious-education .schedule-table tbody{
     display:block;
     width:100%;
   }
-  #fellowship .fellowship-table thead tr,
-  #fellowship .fellowship-table tbody tr{
+  #schedule .schedule-table tr,
+  #fellowship .schedule-table tr,
+  #religious-education .schedule-table tr{
     display:grid;
-    grid-template-columns:minmax(0,34%) minmax(0,66%);
+    grid-template-columns:minmax(0,40%) minmax(0,60%);
     width:100%;
   }
-  #fellowship .fellowship-table th,
-  #fellowship .fellowship-table td{
+  #schedule .schedule-table th,
+  #schedule .schedule-table td,
+  #fellowship .schedule-table th,
+  #fellowship .schedule-table td,
+  #religious-education .schedule-table th,
+  #religious-education .schedule-table td{
     display:block;
+    box-sizing:border-box;
     width:auto;
     min-width:0;
-    overflow-wrap:anywhere;
+    padding:12px 12px;
     border-bottom:0;
-    padding:12px 10px;
+    overflow-wrap:anywhere;
+    word-break:normal;
   }
-  #fellowship .fellowship-table thead th:nth-child(3){
+  #fellowship .schedule-table thead th:nth-child(3),
+  #religious-education .schedule-table thead th:nth-child(3){
     display:none;
   }
-  #fellowship .fellowship-table tbody tr{
+  #schedule .schedule-table thead tr,
+  #schedule .schedule-table tbody tr,
+  #fellowship .schedule-table thead tr,
+  #fellowship .schedule-table tbody tr,
+  #religious-education .schedule-table thead tr,
+  #religious-education .schedule-table tbody tr{
     border-bottom:1px solid var(--line);
   }
-  #fellowship .fellowship-table tbody tr:last-child{
+  #schedule .schedule-table tbody tr:last-child,
+  #fellowship .schedule-table tbody tr:last-child,
+  #religious-education .schedule-table tbody tr:last-child{
     border-bottom:0;
   }
-  #fellowship .fellowship-table tbody td:nth-child(3){
+  #fellowship .schedule-table tbody td:nth-child(3),
+  #religious-education .schedule-table tbody td:nth-child(3){
     grid-column:2;
     padding-top:0;
     color:var(--muted);
     font-size:.92em;
     line-height:1.65;
   }
-  #fellowship .fellowship-table tbody td:nth-child(3)::before{
+  #fellowship .schedule-table tbody td:nth-child(3)::before,
+  #religious-education .schedule-table tbody td:nth-child(3)::before{
     content:"說明：";
     font-size:.9em;
+  }
+  #religious-education .schedule-table tbody td:nth-child(3)::before{
+    content:"對象：";
   }
 }

@@ -18,6 +18,27 @@
   <link rel="stylesheet" href="assets/styles.css?v=20261013-logo95" />
   <link rel="stylesheet" href="assets/navigation.css?v=20261013-nav" />
   <link rel="stylesheet" href="assets/pages.css?v=20261121-hide-field-prefixes" />
+  <style>
+    /* Visit page: accessible, keyboard-operable collapsible schedules */
+    .visit-disclosure { border: 1px solid rgba(89,102,104,.26); border-radius: 12px; overflow: hidden; }
+    .visit-disclosure-trigger { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 24px; cursor: pointer; list-style: none; background: rgba(123,143,147,.07); transition: background .2s ease; }
+    .visit-disclosure-trigger::-webkit-details-marker { display: none; }
+    .visit-disclosure-trigger:hover { background: rgba(123,143,147,.13); }
+    .visit-disclosure-trigger:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+    .visit-disclosure-title { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.5; }
+    .visit-disclosure-action { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; font-size: .9rem; }
+    .visit-disclosure-chevron { width: 9px; height: 9px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .2s ease; margin-top: -5px; }
+    .visit-disclosure[open] .visit-disclosure-chevron { transform: rotate(225deg); margin-top: 4px; }
+    .visit-disclosure[open] .visit-disclosure-action { font-size: 0; }
+    .visit-disclosure[open] .visit-disclosure-action::before { content: "收合"; font-size: .9rem; }
+    .visit-disclosure-content { padding: 18px 24px 24px; }
+    .visit-disclosure-content .section-head { margin-bottom: 22px; }
+    @media (max-width: 640px) {
+      .visit-disclosure-trigger { padding: 16px; }
+      .visit-disclosure-content { padding: 16px 12px 20px; }
+      .visit-disclosure-action { gap: 8px; }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -160,9 +181,11 @@
     </section>
 
     <section id="fellowship" class="section">
+      <details class="visit-disclosure">
+        <summary class="visit-disclosure-trigger"><span class="visit-disclosure-title">團契聚會時間</span><span class="visit-disclosure-action" aria-hidden="true">展開 <span class="visit-disclosure-chevron"></span></span></summary>
+        <div class="visit-disclosure-content">
       <div class="section-kicker">Fellowship</div>
       <div class="section-head">
-        <h2>團契聚會時間</h2>
         <p>我們將所看見、所聽見的傳給你們，使你們與我們相交。我們乃是與父並祂兒子耶穌基督相交的。我們將這些話寫給你們，使你們的喜樂充足。<span class="scripture-ref">（約翰壹書第一章第3-4節）</span></p>
       </div>
       <table class="schedule-table fellowship-table">
@@ -176,12 +199,17 @@
           <tr><td>讀經團契</td><td>週一、週三、週五 上午 09:00–10:40</td><td>週間日間聚會</td></tr>
         </tbody>
       </table>
+
+        </div>
+      </details>
     </section>
 
     <section id="religious-education" class="section">
+      <details class="visit-disclosure">
+        <summary class="visit-disclosure-trigger"><span class="visit-disclosure-title">宗教教育時間（週六）</span><span class="visit-disclosure-action" aria-hidden="true">展開 <span class="visit-disclosure-chevron"></span></span></summary>
+        <div class="visit-disclosure-content">
       <div class="section-kicker">Religious Education</div>
       <div class="section-head">
-        <h2>宗教教育時間（週六）</h2>
         <p>教養孩童，使他走當行的道，就是到老他也不偏離。<span class="scripture-ref">(箴言第二十二章第6節)</span></p>
       </div>
       <table class="schedule-table education-table">
@@ -197,6 +225,9 @@
           <tr><td>大專班</td><td>下午 15:30–17:30</td><td>大專院校學生</td></tr>
         </tbody>
       </table>
+
+        </div>
+      </details>
     </section>
 
     <section class="section cta-section">

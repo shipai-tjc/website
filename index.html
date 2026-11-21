@@ -21,7 +21,7 @@
     /* Home quick links: four equal columns on desktop, one per row on phones. */
     .home-page .home-quick-links.section { box-sizing:border-box; width:100%; max-width:none; margin-left:0; margin-right:0; padding:clamp(28px,4vw,52px) 0; }
     .home-quick-links-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; }
-    .home-quick-link { display:flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:0; min-height:92px; padding:20px 12px; border:0; border-radius:0; text-align:center; color:#fff; font-size:clamp(18.67px,calc(1.6vw + 2.67px),23.67px); font-weight:500; line-height:1.5; text-decoration:none; transition:filter .2s ease; }
+    .home-quick-link { display:flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:0; min-height:106px; padding:20px 12px; border:0; border-radius:0; text-align:center; color:#fff; font-size:clamp(18.67px,calc(1.6vw + 2.67px),23.67px); font-weight:500; line-height:1.5; letter-spacing:.12em; text-decoration:none; transition:filter .2s ease; }
     /* Four related browns, distinct from the navigation bar (#574935). */
     .home-quick-link:nth-child(1) { background:#89766A; }
     .home-quick-link:nth-child(2) { background:#826F63; }
@@ -43,7 +43,7 @@
     @media(max-width:700px) {
       .home-page .home-quick-links.section { padding:24px 0 32px; }
       .home-quick-links-grid { grid-template-columns:minmax(0,1fr); gap:0; }
-      .home-quick-link { min-height:62px; padding:14px 16px; font-size:20.67px; }
+      .home-quick-link { min-height:71px; padding:14px 16px; font-size:20.67px; }
       .home-mobile-label { display:inline; }
       .home-desktop-label { display:none; }
       .home-visit-grid { grid-template-columns:minmax(0,1fr); gap:20px; }
@@ -157,6 +157,10 @@
       <video class="home-hero-video" autoplay muted playsinline preload="metadata" aria-label="石牌教會首頁主視覺影片">
         <source src="assets/tjc%E9%A6%96%E9%A0%81.mp4?v=20261114-hero-reload" type="video/mp4">
       </video>
+    </section>
+    <section class="section home-scripture" aria-label="聖經經文">
+      <h2><span class="scripture-phrase"><span class="scripture-line">凡勞苦擔重擔的人，</span><span class="scripture-line">可以到我這裏來，</span><span class="scripture-line">我就使你們得安息。</span></span></h2>
+      <p class="scripture-ref">（馬太福音第十一章第28節）</p>
     </section>
     <section class="section home-quick-links" aria-label="常用入口">
       <nav class="home-quick-links-grid" aria-label="石牌教會常用連結">

@@ -187,9 +187,20 @@ a.button:hover, button.button:hover,
   border-color: #c9cfcc;
 }
 .contact-note { color: var(--muted); font-size: 15px; }
-.footer { color: var(--muted); font-size: 14.5px; }
-.footer strong { color: var(--ink); font-weight: 600; }
-.footer-links a:hover, .footer a:hover { color: var(--accent); }
+.footer {
+  max-width:none;
+  box-sizing:border-box;
+  background:#574935;
+  color:#f5f1ea;
+  font-size:14.5px;
+  padding-left:max(20px,calc((100% - 1120px)/2));
+  padding-right:max(20px,calc((100% - 1120px)/2));
+  border-top:0;
+}
+.footer strong { color:#fff; font-weight:600; }
+.footer a,.footer a:visited { color:#f5f1ea; }
+.footer-links a:hover,.footer a:hover { color:#fff; text-decoration:underline; text-underline-offset:4px; }
+.footer a:focus-visible { outline-color:#fff; }
 
 /* 各頁的鍵盤操作與表單也使用一致的可辨識焦點。 */
 :where(a, button, input, textarea, select):focus-visible {

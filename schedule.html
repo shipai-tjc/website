@@ -42,8 +42,11 @@
     /* Hide the generic .section top rules around the schedule controls. */
     .schedule-quick-section.section,
     .schedule-content-panel.section {border-top:0!important;}
-    .schedule-quick-section.section {padding-top:32px;padding-bottom:24px;}
-    .schedule-quick-links {display:flex;flex-direction:row;width:100%;gap:0;}
+    .schedule-quick-section.section {border:0!important;box-shadow:none!important;}
+    .schedule-quick-section.section::before,
+    .schedule-quick-section.section::after {content:none!important;display:none!important;}
+    .schedule-quick-section.section {padding-top:22px;padding-bottom:18px;}
+    .schedule-quick-links {display:flex;flex-direction:row;width:88%;max-width:1100px;margin:0 auto;gap:0;}
     .schedule-quick-links > .schedule-quick-link {flex:1 1 0;min-width:0;}
     .schedule-quick-link {box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:127px;padding:20px 16px;border:0;border-radius:0;cursor:pointer;text-align:center;text-decoration:none;color:#fff;font-family:inherit;font-size:clamp(20px,2.2vw,25px);font-weight:500;letter-spacing:.12em;line-height:1.5;transition:filter .2s ease;}
     .schedule-quick-link:nth-child(1){background:#A69589;}
@@ -59,7 +62,7 @@
     #schedule,#fellowship,#religious-education {scroll-margin-top:100px;}
     @media(max-width:700px){
       .schedule-quick-section.section{padding-top:20px;padding-bottom:20px;}
-      .schedule-quick-links{flex-direction:row;}
+      .schedule-quick-links{flex-direction:row;width:100%;max-width:none;}
       .schedule-quick-link{min-height:85px;padding:12px 3px;font-size:clamp(13px,3.8vw,18px);letter-spacing:.02em;white-space:nowrap;}
     }
     @media(prefers-reduced-motion:reduce){.schedule-quick-link{transition:none;}}

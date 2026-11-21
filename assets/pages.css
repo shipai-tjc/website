@@ -40,6 +40,7 @@
 #religious-education .schedule-table{
   table-layout:fixed;
 }
+@media (min-width:601px){
 #schedule .schedule-table th:first-child,
 #schedule .schedule-table td:first-child,
 #fellowship .schedule-table th:first-child,
@@ -53,6 +54,7 @@
 #religious-education .schedule-table th:nth-child(2),
 #religious-education .schedule-table td:nth-child(2){
   width:30%;
+}
 }
 #schedule .schedule-table th,
 #schedule .schedule-table td,

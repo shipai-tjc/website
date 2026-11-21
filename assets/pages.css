@@ -34,6 +34,16 @@
 }
 .schedule-table tr:last-child td{border-bottom:0}
 
+/* Keep fellowship and religious-education columns aligned at equal widths. */
+.fellowship-table,.education-table{
+  table-layout:fixed;
+}
+.fellowship-table th,.fellowship-table td,
+.education-table th,.education-table td{
+  width:33.3333%;
+  overflow-wrap:break-word;
+}
+
 .blog-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -226,4 +236,65 @@
     grid-column:2;
     justify-self:start;
   }
+}
+
+/* Small screens: align the first two fields, then give long descriptions full width. */
+@media (max-width:600px){
+  #fellowship .fellowship-table,
+  #religious-education .education-table{
+    display:block;
+    overflow:visible;
+    border:0;
+    border-radius:0;
+    background:transparent;
+  }
+  .fellowship-table thead,.education-table thead{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+  }
+  .fellowship-table tbody,.education-table tbody{
+    display:grid;
+    gap:12px;
+  }
+  .fellowship-table tbody tr,.education-table tbody tr{
+    display:grid;
+    grid-template-columns:minmax(0,33.333%) minmax(0,66.667%);
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,.58);
+    padding:12px 8px;
+  }
+  .fellowship-table tbody td,.education-table tbody td{
+    display:block;
+    width:auto;
+    padding:8px;
+    border:0;
+    min-width:0;
+    overflow-wrap:break-word;
+  }
+  .fellowship-table tbody td:first-child,
+  .education-table tbody td:first-child{
+    font-weight:600;
+  }
+  .fellowship-table tbody td:nth-child(3),
+  .education-table tbody td:nth-child(3){
+    grid-column:1 / -1;
+    margin-top:7px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+  }
+  .fellowship-table tbody td:nth-child(3)::before,
+  .education-table tbody td:nth-child(3)::before{
+    display:block;
+    margin-bottom:6px;
+    color:var(--muted);
+    font-size:12px;
+    letter-spacing:.08em;
+  }
+  .fellowship-table tbody td:nth-child(3)::before{content:"說明"}
+  .education-table tbody td:nth-child(3)::before{content:"對象"}
 }

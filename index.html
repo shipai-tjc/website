@@ -21,8 +21,14 @@
     /* Home quick links: four equal columns on desktop, one per row on phones. */
     .home-page .home-quick-links { padding-top: clamp(28px, 4vw, 52px); padding-bottom: clamp(28px, 4vw, 52px); }
     .home-quick-links-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; }
-    .home-quick-link { display:flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:0; min-height:92px; padding:20px 12px; border:1px solid rgba(100,110,110,.24); border-radius:0; background:rgba(255,255,255,.55); text-align:center; color:inherit; font-size:clamp(16px,1.6vw,21px); font-weight:500; line-height:1.5; text-decoration:none; transition:background .2s,border-color .2s; }
-    .home-quick-link:hover { background:rgba(222,229,228,.5); border-color:rgba(95,113,111,.55); }
+    .home-quick-link { display:flex; align-items:center; justify-content:center; box-sizing:border-box; min-width:0; min-height:92px; padding:20px 12px; border:0; border-radius:0; text-align:center; color:#fff; font-size:clamp(18.67px,calc(1.6vw + 2.67px),23.67px); font-weight:500; line-height:1.5; text-decoration:none; transition:filter .2s ease; }
+    /* Four related browns, distinct from the navigation bar (#574935). */
+    .home-quick-link:nth-child(1) { background:#806047; }
+    .home-quick-link:nth-child(2) { background:#76583f; }
+    .home-quick-link:nth-child(3) { background:#6c4c36; }
+    .home-quick-link:nth-child(4) { background:#60402f; }
+    .home-quick-link:hover { filter:brightness(1.12); }
+    .home-quick-link:visited { color:#fff; }
     .home-quick-link:focus-visible,.home-map-link:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
     .home-mobile-label { display:none; }
     .home-page .home-visit { padding-top:8px; }
@@ -37,7 +43,7 @@
     @media(max-width:700px) {
       .home-page .home-quick-links { padding-top:24px; padding-bottom:32px; }
       .home-quick-links-grid { grid-template-columns:minmax(0,1fr); gap:0; }
-      .home-quick-link { min-height:62px; padding:14px 16px; font-size:18px; border:0; border-radius:0; background:rgba(225,232,231,.55); }
+      .home-quick-link { min-height:62px; padding:14px 16px; font-size:20.67px; }
       .home-mobile-label { display:inline; }
       .home-desktop-label { display:none; }
       .home-visit-grid { grid-template-columns:minmax(0,1fr); gap:20px; }

@@ -1,11 +1,112 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>網站後台｜真耶穌教會石牌教會</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>網站管理中心｜TJC SHIPAI</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root{color-scheme:light;--coffee:#574935;--deep:#382f27;--cream:#faf9f6;--line:#e5e1da;--ink:#34332f;--muted:#746f69;--accent:#a69589}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--cream);font:15px/1.65 system-ui,-apple-system,"Noto Sans TC",sans-serif}
+    a{color:inherit}button{font:inherit} .layout{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+    aside{padding:28px 20px;background:var(--deep);color:#fff;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:24px}
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:#fff}.brand img{width:42px;height:42px;object-fit:contain}
+    .brand strong{display:block;letter-spacing:.14em}.brand small{font-size:11px;letter-spacing:.12em;color:#d8cbc0}
+    .side-label{color:#c7b8a8;font-size:11px;letter-spacing:.16em;margin-bottom:10px}
+    aside nav{display:grid;gap:4px}aside nav a{border-radius:7px;padding:10px 12px;color:#ebe4dd;text-decoration:none}
+    aside nav a:hover,aside nav a:focus-visible{background:#574935;color:#fff}
+    .side-foot{margin-top:auto;font-size:12px;color:#c9bdb0}
+    main{width:100%;max-width:1350px;margin:0 auto;padding:38px clamp(18px,4vw,52px) 80px}
+    .top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:28px}
+    .eyebrow{letter-spacing:.18em;font-size:12px;color:#938273;font-weight:600}
+    h1{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(27px,3vw,38px);font-weight:500;margin:5px 0 7px}
+    h2{font-size:20px;font-weight:600;margin:0}h3{font-size:16px;margin:0 0 6px}
+    p{margin:0;color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap}
+    .button{display:inline-flex;gap:6px;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--line);border-radius:7px;padding:10px 15px;background:#fff;font-weight:600;font-size:13px;cursor:pointer}
+    .button.primary{background:var(--coffee);color:#fff;border-color:var(--coffee)}.button:hover{filter:brightness(.96)}
+    .notice{background:#f0ece7;border:1px solid #e5d9ce;border-radius:10px;padding:16px 20px;color:#52483f;margin:0 0 28px}
+    .notice strong{display:block;margin-bottom:4px}.notice p{color:#655b51;font-size:13px}
+    .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:34px}
+    .stat,.panel{background:#fff;border:1px solid var(--line);border-radius:11px}
+    .stat{padding:20px}.stat strong{display:block;font-size:27px;line-height:1.4;font-weight:600;color:var(--deep)}
+    .stat span{font-size:12px;color:var(--muted)}
+    .section-head{display:flex;gap:14px;justify-content:space-between;align-items:center;margin:0 0 16px}
+    .modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:34px}
+    .module{background:#fff;border:1px solid var(--line);border-radius:11px;padding:22px;display:flex;flex-direction:column;gap:14px}
+    .module .meta{display:flex;gap:10px;align-items:center;color:#8d7c6f;font-size:12px}
+    .module p{font-size:13px}.module .links{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}
+    .module a.link{color:var(--coffee);text-decoration:none;font-size:13px;font-weight:600;border-bottom:1px solid #b5a79b}
+    .module a.link:hover{text-decoration:underline}.tag{padding:2px 8px;border-radius:5px;background:#f1ede8;color:#7b685b}
+    .panel{padding:22px;margin:0 0 20px}.panel ol{padding-left:23px;margin:12px 0 0}.panel li{margin:8px 0}
+    .panel code{background:#f2efe9;border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
+    .muted{color:var(--muted);font-size:12px}.status{margin-top:14px;font-size:12px}
+    footer{margin-top:35px;font-size:12px;color:var(--muted)}
+    @media(max-width:980px){.layout{grid-template-columns:1fr}aside{height:auto;position:static;padding:15px 20px;display:block}aside nav,.side-label,.side-foot{display:none}main{padding-top:24px}}
+    @media(max-width:680px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1/-1}.modules{grid-template-columns:1fr}.top{display:block}.actions{margin-top:16px}}
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<div class="layout">
+  <aside>
+    <a class="brand" href="../index.html"><img src="../assets/favicon.svg" alt=""><span><strong>TJC SHIPAI</strong><small>CONTENT MANAGEMENT</small></span></a>
+    <div><div class="side-label">網站管理</div>
+      <nav aria-label="後台選單">
+        <a href="#overview">總覽</a><a href="#content">內容管理</a><a href="#media">影音與圖片</a><a href="#publishing">發布與權限</a><a href="../index.html">返回網站</a>
+      </nav>
+    </div>
+    <div class="side-foot">真耶穌教會石牌教會<br>僅授權同工可透過 GitHub 修改並發布</div>
+  </aside>
+  <main>
+    <div class="top" id="overview">
+      <div><span class="eyebrow">WEBSITE ADMINISTRATION</span><h1>網站管理中心</h1><p>集中管理石牌教會網站的頁面、聚會資料、文章與影片。</p></div>
+      <div class="actions"><a class="button" href="../index.html" target="_blank" rel="noopener">預覽正式網站 ↗</a><a class="button primary" href="https://github.com/shipai-tjc/website" target="_blank" rel="noopener">登入 GitHub 管理 ↗</a></div>
+    </div>
+    <div class="notice" role="note"><strong>目前的安全管理方式：GitHub 授權編輯</strong>
+      <p>這個管理中心提供內容總覽與編輯入口。按「編輯」會前往 GitHub，須具有 <code>shipai-tjc/website</code> 寫入權限才能儲存。未經設定伺服器端 OAuth 以前，不會在網站中要求輸入個人存取權杖，也不會假裝已完成站內登入。</p>
+    </div>
+    <section aria-label="網站資料摘要" class="stats">
+      <div class="stat"><strong id="count-testimonies">—</strong><span>生命見證文章</span></div>
+      <div class="stat"><strong id="count-news">—</strong><span>最新消息項目</span></div>
+      <div class="stat"><strong id="video-date">—</strong><span>最近一次影片資料日期</span></div>
+    </section>
+    <section id="content">
+      <div class="section-head"><h2>內容管理</h2><span class="muted">各編輯入口均有 GitHub 版本紀錄</span></div>
+      <div class="modules">
+        <article class="module"><div class="meta"><span class="tag">01 / HOME</span> 首頁</div><div><h3>首頁與導覽</h3><p>Hero、首頁入口、地圖、交通方式、頁面文案及連結。現階段透過版控修改 HTML。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/edit/main/index.html" target="_blank" rel="noopener">編輯首頁 ↗</a><a class="link" href="../index.html" target="_blank" rel="noopener">預覽 ↗</a></div></article>
+        <article class="module"><div class="meta"><span class="tag">02 / SCHEDULE</span> 聚會時間</div><div><h3>崇拜、團契、宗教教育</h3><p>修改聚會時間、各團契對象、宗教教育課表與經文說明。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/edit/main/schedule.html" target="_blank" rel="noopener">編輯聚會時間 ↗</a><a class="link" href="../schedule.html" target="_blank" rel="noopener">預覽 ↗</a></div></article>
+        <article class="module"><div class="meta"><span class="tag">03 / NEWS</span> 最新消息</div><div><h3>公告與消息</h3><p>管理發布日期、標題、摘要及連結。此功能在首頁目前仍為隱藏狀態。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/edit/main/data/news.json" target="_blank" rel="noopener">編輯消息 ↗</a><a class="link" href="../index.html#news" target="_blank" rel="noopener">查看網站 ↗</a></div></article>
+        <article class="module"><div class="meta"><span class="tag">04 / HISTORY</span> 教會沿革</div><div><h3>歷史與教會介紹</h3><p>修改頁面標題、前言及沿革文章，不影響其他分頁。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/edit/main/data/history.json" target="_blank" rel="noopener">編輯沿革 ↗</a><a class="link" href="../history.html" target="_blank" rel="noopener">預覽 ↗</a></div></article>
+        <article class="module"><div class="meta"><span class="tag">05 / STORIES</span> 生命見證</div><div><h3>見證文章資料庫</h3><p>修改文章標題、作者、摘要、正文及來源連結。請留意公開發表的個資與授權。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/edit/main/data/testimonies.json" target="_blank" rel="noopener">編輯見證 ↗</a><a class="link" href="../testimonies.html" target="_blank" rel="noopener">預覽 ↗</a></div></article>
+        <article class="module"><div class="meta"><span class="tag">06 / CONTACT</span> 聯絡資訊</div><div><h3>聯絡頁與來訪資訊</h3><p>管理聯絡頁內容及公開聯絡方式。首頁地址與交通方式仍需在首頁同步修改。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/edit/main/contact.html" target="_blank" rel="noopener">編輯聯絡頁 ↗</a><a class="link" href="../contact.html" target="_blank" rel="noopener">預覽 ↗</a></div></article>
+      </div>
+    </section>
+    <section id="media">
+      <div class="section-head"><h2>影音與圖片</h2></div>
+      <div class="modules">
+        <article class="module"><div class="meta"><span class="tag">VIDEO</span> 自動更新</div><div><h3>最新崇拜影片</h3><p id="video-title">正在讀取影片資料…</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/actions/workflows/update-latest-video.yml" target="_blank" rel="noopener">查看自動更新紀錄 ↗</a><a class="link" href="https://github.com/shipai-tjc/website/blob/main/data/latest-video.json" target="_blank" rel="noopener">資料來源 ↗</a></div></article>
+        <article class="module"><div class="meta"><span class="tag">MEDIA</span> 圖片／影片素材</div><div><h3>上傳與更換媒體</h3><p>使用 GitHub 權限上傳素材，首頁影片來源由 <code>index.html</code> 控制。</p></div><div class="links"><a class="link" href="https://github.com/shipai-tjc/website/tree/main/assets" target="_blank" rel="noopener">開啟素材目錄 ↗</a><a class="link" href="https://github.com/shipai-tjc/website/edit/main/index.html" target="_blank" rel="noopener">修改 Hero 設定 ↗</a></div></article>
+      </div>
+    </section>
+    <section id="publishing" class="panel">
+      <h2>發布流程與權限</h2>
+      <ol>
+        <li>使用已獲授權的 GitHub 帳號登入。網站管理權限由儲存庫管理員控管。</li>
+        <li>點選上方「編輯」，修改對應檔案；JSON 檔案務必維持正確格式。</li>
+        <li>先使用 GitHub 分支／Pull Request 審核重要內容，再合併至 <code>main</code> 發布。</li>
+        <li>檢查 <a href="https://github.com/shipai-tjc/website/actions" target="_blank" rel="noopener">GitHub Actions</a> 與正式頁面，確認部署完成。</li>
+      </ol>
+      <p class="status">後續要達成類似 HANA SCENT 的「站內表單直接修改、儲存與審核」，需配置 OAuth 登入及有權限驗證的伺服器端寫入服務；目前這裡尚未提供該功能。</p>
+    </section>
+    <footer>© 2026 真耶穌教會石牌教會 · 網站管理中心 · 請勿公開分享具編輯權限的帳號</footer>
+  </main>
+</div>
+<script>
+(async function(){
+  async function read(path){const response=await fetch('../'+path+'?t='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error(path);return response.json()}
+  const requests=[['data/testimonies.json',data=>document.getElementById('count-testimonies').textContent=Array.isArray(data.items)?data.items.length:'—'],['data/news.json',data=>document.getElementById('count-news').textContent=Array.isArray(data.items)?data.items.length:'—'],['data/latest-video.json',data=>{document.getElementById('video-date').textContent=data.publishedAt?new Date(data.publishedAt).toLocaleDateString('zh-TW',{timeZone:'Asia/Taipei'}):'—';document.getElementById('video-title').textContent=data.title||'尚無影片資料';}]];
+  await Promise.all(requests.map(async ([path,render])=>{try{render(await read(path))}catch(e){if(path.includes('latest-video'))document.getElementById('video-title').textContent='暫時無法取得最新影片資料';}}));
+})();
+</script>
 </body>
 </html>

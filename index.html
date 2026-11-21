@@ -49,6 +49,11 @@
     .home-visit-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); gap:clamp(20px,3vw,42px); align-items:center; }
     .home-visit-grid .map-panel { min-height:280px; overflow:hidden; border-radius:8px; }
     .home-visit-grid .map-panel iframe { width:100%; height:100%; min-height:280px; border:0; display:block; }
+    .home-visit-map-group { min-width:0; }
+    .home-visit-transport { margin-top:18px; line-height:1.65; color:inherit; }
+    .home-visit-transport h4 { margin:0 0 8px; font-size:1.1rem; font-weight:600; }
+    .home-visit-transport p { margin:0 0 6px; font-size:clamp(14px,1.1vw,16px); }
+    .home-visit-transport strong { font-weight:600; }
     .home-visit-address { line-height:1.5; overflow-wrap:anywhere; }
     .home-visit-address p { margin:0 0 4px; }
     .home-visit-name { font-size:1.18rem; font-weight:600; }
@@ -63,6 +68,9 @@
       .home-mobile-label { display:inline; }
       .home-desktop-label { display:none; }
       .home-visit-grid { grid-template-columns:minmax(0,1fr); gap:20px; }
+      .home-visit-address { order:1; }
+      .home-visit-map-group { order:2; }
+      .home-visit-transport { margin-top:16px; }
       .home-visit-grid .map-panel,.home-visit-grid .map-panel iframe { min-height:230px; }
       .home-visit h3 { margin-bottom:18px; }
     }
@@ -189,13 +197,20 @@
       </nav>
     </section>
     <section id="visit" class="section home-visit" aria-labelledby="home-visit-title">
-      <h3 id="home-visit-title">我要去教會</h3>
+      <h3 id="home-visit-title">真耶穌教會石牌教會</h3>
       <div class="home-visit-grid">
-        <div class="map-panel" aria-label="石牌教會地圖">
-          <iframe title="真耶穌教會石牌教會 Google 地圖" loading="lazy" src="https://www.google.com/maps?q=112%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E8%87%B4%E9%81%A0%E4%B8%80%E8%B7%AF%E4%B8%80%E6%AE%B527%E8%99%9F&amp;output=embed"></iframe>
+        <div class="home-visit-map-group">
+          <div class="map-panel" aria-label="石牌教會地圖">
+            <iframe title="真耶穌教會石牌教會 Google 地圖" loading="lazy" src="https://www.google.com/maps?q=112%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E8%87%B4%E9%81%A0%E4%B8%80%E8%B7%AF%E4%B8%80%E6%AE%B527%E8%99%9F&amp;output=embed"></iframe>
+          </div>
+          <div class="home-visit-transport">
+            <h4>交通方式</h4>
+            <p><strong>捷運｜</strong>搭乘淡水信義線至石牌站，出站後步行前往。</p>
+            <p><strong>公車｜</strong>可搭乘至石牌站周邊站牌，再步行至教會；實際路線請依公車動態資訊查詢。</p>
+            <p><strong>自行開車｜</strong>可使用下方 Google 地圖連結規劃路線。</p>
+          </div>
         </div>
         <div class="home-visit-address">
-          <p class="home-visit-name">真耶穌教會石牌教會</p>
           <p>112 台北市北投區致遠一路一段 27 號</p>
           <p>電話：<a href="tel:+886228233734">02-2823-3734</a></p>
           <a class="home-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=112%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8C%97%E6%8A%95%E5%8D%80%E8%87%B4%E9%81%A0%E4%B8%80%E8%B7%AF%E4%B8%80%E6%AE%B527%E8%99%9F" target="_blank" rel="noopener">在 Google 地圖開啟</a>

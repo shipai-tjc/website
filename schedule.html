@@ -42,12 +42,16 @@
     .schedule-quick-section.section {padding-top:32px;padding-bottom:24px;}
     .schedule-quick-links {display:flex;flex-direction:row;width:100%;gap:0;}
     .schedule-quick-links > .schedule-quick-link {flex:1 1 0;min-width:0;}
-    .schedule-quick-link {box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:100px;padding:20px 16px;text-align:center;text-decoration:none;color:#fff;font-size:clamp(20px,2.2vw,25px);font-weight:500;letter-spacing:.12em;line-height:1.5;transition:filter .2s ease;}
+    .schedule-quick-link {box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:100px;padding:20px 16px;border:0;border-radius:0;cursor:pointer;text-align:center;text-decoration:none;color:#fff;font-family:inherit;font-size:clamp(20px,2.2vw,25px);font-weight:500;letter-spacing:.12em;line-height:1.5;transition:filter .2s ease;}
     .schedule-quick-link:nth-child(1){background:#A69589;}
     .schedule-quick-link:nth-child(2){background:#9E8B7F;}
     .schedule-quick-link:nth-child(3){background:#968276;}
     .schedule-quick-link:visited{color:#fff;}
     .schedule-quick-link:hover{filter:brightness(1.08);}
+    .schedule-quick-link[aria-expanded="true"]{filter:brightness(.92);}
+    .schedule-content-panel[hidden]{display:none!important;}
+    .schedule-panel-title{margin:0 0 18px;font-size:clamp(23px,2.6vw,32px);}
+    .schedule-panel-content{width:100%;}
     .schedule-quick-link:focus-visible{outline:2px solid #574935;outline-offset:-4px;}
     #schedule,#fellowship,#religious-education {scroll-margin-top:100px;}
     @media(max-width:700px){
@@ -165,13 +169,13 @@
 
     <section class="section schedule-quick-section" aria-label="聚會時間分類">
       <nav class="schedule-quick-links" aria-label="聚會時間快速選單">
-        <a href="#schedule" class="schedule-quick-link">崇拜時間</a>
-        <a href="#fellowship" class="schedule-quick-link">團契聚會</a>
-        <a href="#religious-education" class="schedule-quick-link">宗教教育</a>
+        <button type="button" class="schedule-quick-link" aria-controls="schedule" aria-expanded="false">崇拜時間</button>
+        <button type="button" class="schedule-quick-link" aria-controls="fellowship" aria-expanded="false">團契聚會</button>
+        <button type="button" class="schedule-quick-link" aria-controls="religious-education" aria-expanded="false">宗教教育</button>
       </nav>
     </section>
 
-    <section id="schedule" class="section">
+    <section id="schedule" class="section schedule-content-panel" hidden>
       <div class="section-kicker">Schedule</div>
       <div class="section-head">
         <h2>石牌教會崇拜時間</h2>
@@ -189,10 +193,9 @@
       </table>
     </section>
 
-    <section id="fellowship" class="section">
-      <details class="visit-disclosure">
-        <summary class="visit-disclosure-trigger"><span class="visit-disclosure-title">團契聚會時間</span><span class="visit-disclosure-action" aria-hidden="true">展開 <span class="visit-disclosure-chevron"></span></span></summary>
-        <div class="visit-disclosure-content">
+    <section id="fellowship" class="section schedule-content-panel" hidden>
+      <h2 class="schedule-panel-title">團契聚會時間</h2>
+      <div class="schedule-panel-content">
       <div class="section-kicker">Fellowship</div>
       <div class="section-head">
         <p>我們將所看見、所聽見的傳給你們，使你們與我們相交。我們乃是與父並祂兒子耶穌基督相交的。我們將這些話寫給你們，使你們的喜樂充足。<span class="scripture-ref">（約翰壹書第一章第3-4節）</span></p>
@@ -208,15 +211,12 @@
           <tr><td>讀經團契</td><td>週一、週三、週五 上午 09:00–10:40</td><td>週間日間聚會</td></tr>
         </tbody>
       </table>
-
-        </div>
-      </details>
+      </div>
     </section>
 
-    <section id="religious-education" class="section">
-      <details class="visit-disclosure">
-        <summary class="visit-disclosure-trigger"><span class="visit-disclosure-title">宗教教育時間（安息日）</span><span class="visit-disclosure-action" aria-hidden="true">展開 <span class="visit-disclosure-chevron"></span></span></summary>
-        <div class="visit-disclosure-content">
+    <section id="religious-education" class="section schedule-content-panel" hidden>
+      <h2 class="schedule-panel-title">宗教教育時間（安息日）</h2>
+      <div class="schedule-panel-content">
       <div class="section-kicker">Religious Education</div>
       <div class="section-head">
         <p>教養孩童，使他走當行的道，就是到老他也不偏離。<span class="scripture-ref">(箴言第二十二章第6節)</span></p>
@@ -234,9 +234,7 @@
           <tr><td>大專班</td><td>下午 15:30–17:30</td><td>大專院校學生</td></tr>
         </tbody>
       </table>
-
-        </div>
-      </details>
+      </div>
     </section>
 
     <section class="section cta-section">
@@ -256,13 +254,25 @@
     <small>© 真耶穌教會石牌教會</small>
   </footer>
   <script>
-    document.querySelectorAll('.schedule-quick-link').forEach(link => {
-      link.addEventListener('click', () => {
-        const target = document.querySelector(link.getAttribute('href'));
-        const details = target && target.querySelector('details');
-        if (details) details.open = true;
+    (() => {
+      const buttons = Array.from(document.querySelectorAll('.schedule-quick-link[aria-controls]'));
+      function selectPanel(id, toggle = false) {
+        const target = document.getElementById(id);
+        if (!target) return;
+        const shouldOpen = !(toggle && !target.hidden);
+        buttons.forEach(button => {
+          const panel = document.getElementById(button.getAttribute('aria-controls'));
+          const open = shouldOpen && panel === target;
+          panel.hidden = !open;
+          button.setAttribute('aria-expanded', String(open));
+        });
+      }
+      buttons.forEach(button => {
+        button.addEventListener('click', () => selectPanel(button.getAttribute('aria-controls'), true));
       });
-    });
+      const initialId = decodeURIComponent(location.hash.slice(1));
+      if (buttons.some(button => button.getAttribute('aria-controls') === initialId)) selectPanel(initialId);
+    })();
   </script>
   <script src="assets/app.js"></script>
 </body>

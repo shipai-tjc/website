@@ -46,7 +46,7 @@
     .schedule-quick-section.section {border:0!important;box-shadow:none!important;}
     .schedule-quick-section.section::before,
     .schedule-quick-section.section::after {content:none!important;display:none!important;}
-    .schedule-quick-section.section {padding-top:22px;padding-bottom:18px;}
+    .schedule-quick-section.section {box-sizing:border-box;width:100%;max-width:none;margin:0;padding:22px 0 18px;}
     .schedule-quick-links {display:flex;flex-direction:row;width:100%;max-width:none;margin:0;gap:0;}
     .schedule-quick-links > .schedule-quick-link {flex:1 1 0;min-width:0;}
     .schedule-quick-link {box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:127px;padding:20px 16px;border:0;border-radius:0;cursor:pointer;text-align:center;text-decoration:none;color:#fff;font-family:inherit;font-size:clamp(20px,2.2vw,25px);font-weight:500;letter-spacing:.12em;line-height:1.5;transition:filter .2s ease;}
@@ -62,7 +62,7 @@
     .schedule-quick-link:focus-visible{outline:2px solid #574935;outline-offset:-4px;}
     #schedule,#fellowship,#religious-education {scroll-margin-top:100px;}
     @media(max-width:700px){
-      .schedule-quick-section.section{padding-top:20px;padding-bottom:20px;}
+      .schedule-quick-section.section{padding:20px 0;}
       .schedule-quick-links{flex-direction:row;width:100%;max-width:none;}
       .schedule-quick-link{min-height:85px;padding:12px 3px;font-size:clamp(13px,3.8vw,18px);letter-spacing:.02em;white-space:nowrap;}
     }
@@ -244,12 +244,7 @@
       </div>
     </section>
 
-    <section class="section cta-section">
-      <div class="cta-actions">
-        <a class="button primary" href="https://youtube.com/@TJChurchShipai" target="_blank" rel="noopener">觀看線上講道</a>
-        <a class="button ghost" href="https://tjcshipaiandtianmu.blogspot.com/" target="_blank" rel="noopener">每日讀經心得</a>
-      </div>
-    </section>
+
   </main>
 
   <footer class="footer">

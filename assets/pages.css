@@ -34,6 +34,11 @@
 }
 .schedule-table tr:last-child td{border-bottom:0}
 
+/* Keep the fellowship title on one line across screen widths. */
+#fellowship .section-head h2{
+  white-space:nowrap;
+}
+
 /* Visit page: all three schedule tables share the same first-column edge. */
 #schedule .schedule-table,
 #fellowship .schedule-table,
@@ -331,10 +336,12 @@
   #religious-education .schedule-table tbody tr:last-child{
     border-bottom:0;
   }
+  /* Show long introductions after the two aligned primary fields. */
   #fellowship .schedule-table tbody td:nth-child(3),
   #religious-education .schedule-table tbody td:nth-child(3){
-    grid-column:2;
-    padding-top:0;
+    grid-column:1 / -1;
+    padding:9px 12px 12px;
+    border-top:1px solid var(--line);
     color:var(--muted);
     font-size:.92em;
     line-height:1.65;

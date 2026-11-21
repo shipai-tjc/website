@@ -41,7 +41,7 @@
     /* Three stacked links reuse the homepage's muted milk-tea browns. */
     /* Hide the generic .section top rules around the schedule controls. */
     .schedule-quick-section.section,
-    .schedule-content-panel.section {border-top:0!important;}
+    .schedule-content-panel.section {border-top:0!important;padding-top:20px;padding-bottom:40px;}
     .cta-section.section {border-top:0!important;border-bottom:0!important;}
     .schedule-quick-section.section {border:0!important;box-shadow:none!important;}
     .schedule-quick-section.section::before,
@@ -272,7 +272,11 @@
         button.addEventListener('click', () => selectPanel(button.getAttribute('aria-controls'), true));
       });
       const initialId = decodeURIComponent(location.hash.slice(1));
-      if (buttons.some(button => button.getAttribute('aria-controls') === initialId)) selectPanel(initialId);
+      if (buttons.some(button => button.getAttribute('aria-controls') === initialId)) {
+        selectPanel(initialId);
+      } else {
+        selectPanel('schedule');
+      }
     })();
   </script>
   <script src="assets/app.js"></script>

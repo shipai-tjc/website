@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+
 const channelId = process.env.YOUTUBE_CHANNEL_ID || 'UCk8zggAqSLPpgpTlR75Ju6w';
 const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
@@ -35,11 +37,28 @@ if (!videoId) {
   throw new Error('Could not find yt:videoId in the latest YouTube feed entry.');
 }
 
-const data = {
-  videoId,
-  title: readTag(entry, 'title'),
-  publishedAt: readTag(entry, 'published'),
-  updatedAt: new Date().toISOString()
-};
+const title = readTag(entry, 'title');
+const publishedAt = readTag(entry, 'published');
 
-process.stdout.write(`${JSON.stringify(data, null, 2)}\n`);
+let previous = null;
+let previousContents = '';
+try {
+  previousContents = await readFile('data/latest-video.json', 'utf8');
+  previous = JSON.parse(previousContents);
+} catch {
+  // First run: create the data file from the latest YouTube upload.
+}
+
+// Avoid committing a new timestamp every 30 minutes when the upload hasn't changed.
+if (previous && previous.videoId === videoId &&
+    previous.title === title && previous.publishedAt === publishedAt) {
+  process.stdout.write(previousContents);
+} else {
+  const data = {
+    videoId,
+    title,
+    publishedAt,
+    updatedAt: new Date().toISOString()
+  };
+  process.stdout.write(`${JSON.stringify(data, null, 2)}\n`);
+}

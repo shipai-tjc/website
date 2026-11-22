@@ -11,7 +11,8 @@ class ArchiveTests(unittest.TestCase):
         indexed = {p['url']:p for p in new}
         self.assertEqual(len(new), len(indexed))
         for p in old: self.assertEqual(indexed[p['url']], p)
-        self.assertEqual(sum(p['source']=='如鷹展翅' for p in new),1092)
+        other_sources = {p['url']: p for p in old if p['source'] != archive.SOURCE}
+        self.assertEqual({p['url']: p for p in new if p['source'] != archive.SOURCE}, other_sources)
     def test_failed_fetch_cannot_write_index(self):
         before = audit.INDEX.read_bytes()
         with patch.object(audit,'collect',side_effect=RuntimeError('network failure')), patch.object(audit,'write') as save:
